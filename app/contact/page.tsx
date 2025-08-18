@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Send, Check, Globe, Heart } from "lucide-react";
 import { siteConfig } from "@/lib/constants";
 
-export default function ContactPage() {
+function ContactContent() {
   const searchParams = useSearchParams();
   const suggestionType = searchParams.get('type');
 
@@ -282,5 +282,13 @@ thegolfindia@gmail.com
       
       
     </>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={<div />}> 
+      <ContactContent />
+    </Suspense>
   );
 }
