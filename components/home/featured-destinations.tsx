@@ -123,11 +123,18 @@ export async function FeaturedDestinations() {
         </div>
 
         <div className="text-center mt-12">
-          <Button variant="outline" size="lg" asChild>
-            <Link href="/destinations">
-              View All Destinations <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button variant="outline" size="lg" asChild>
+              <Link href="/destinations">
+                View All Destinations <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+            <Button variant="green" size="lg" asChild>
+              <Link href="/contact?type=suggestion">
+                Suggest Your Choice <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </section>

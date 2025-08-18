@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { MapPin, ArrowRight } from "lucide-react";
+import { MapPin, ArrowRight, Globe, MessageSquare } from "lucide-react";
 import { getAllDestinations } from "@/lib/destinations";
 import Image from "next/image";
 import Link from "next/link";
@@ -142,6 +142,79 @@ export default async function DestinationsPage() {
         </div>
       </section>
       
+      {/* Suggestion Card Section */}
+      <section className="py-16 bg-gradient-to-br from-[#0F4C3A] to-[#1A6B54]">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/20">
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-[#D4AF37] rounded-full mb-6">
+                  <Globe className="h-8 w-8 text-white" />
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Want to Visit Other Places?
+                </h2>
+                <p className="text-gray-200 text-lg max-w-2xl mx-auto">
+                  Have a dream golf destination in mind? We'd love to hear your suggestions!
+                  Help us expand our golf travel offerings by sharing your favorite courses and locations.
+                </p>
+              </div>
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-8 h-8 bg-[#D4AF37] rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">1</span>
+                    </div>
+                    <div>
+                      <h3 className="text-white font-semibold mb-1">Share Your Dream Destination</h3>
+                      <p className="text-gray-300 text-sm">Tell us about the golf courses and locations you'd love to visit</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-8 h-8 bg-[#D4AF37] rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">2</span>
+                    </div>
+                    <div>
+                      <h3 className="text-white font-semibold mb-1">Tell Us Your Preferences</h3>
+                      <p className="text-gray-300 text-sm">Share your accommodation, dining, and activity preferences</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0 w-8 h-8 bg-[#D4AF37] rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">3</span>
+                    </div>
+                    <div>
+                      <h3 className="text-white font-semibold mb-1">We'll Create Your Itinerary</h3>
+                      <p className="text-gray-300 text-sm">Our experts will design a custom golf travel experience just for you</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                  <div className="text-center mb-6">
+                    <MessageSquare className="h-8 w-8 text-[#D4AF37] mx-auto mb-3" />
+                    <h3 className="text-xl font-semibold text-white mb-2">Send Your Suggestion</h3>
+                    <p className="text-gray-300 text-sm">We'll get back to you within 24 hours</p>
+                  </div>
+                  <Button
+                    variant="glassmorphism"
+                    size="lg"
+                    className="w-full group bg-[#D4AF37] hover:bg-[#B8941F] text-white border-0"
+                    asChild
+                  >
+                    <Link href="/contact?type=suggestion">
+                      Suggest a Destination <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </Button>
+                  <p className="text-center text-gray-300 text-xs mt-4">
+                    Or email us directly at <span className="text-[#D4AF37]">suggestions@golftravel.com</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 text-center">
