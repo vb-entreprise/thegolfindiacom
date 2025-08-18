@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,12 +10,15 @@ import { Phone, Mail, MapPin, Send, Check, Globe, Heart } from "lucide-react";
 import { siteConfig } from "@/lib/constants";
 
 export default function ContactPage() {
+  const searchParams = useSearchParams();
+  const suggestionType = searchParams.get('type');
+
   const [formState, setFormState] = useState({
     name: "",
     email: "",
     phone: "",
-    subject: "",
-    message: "",
+    subject: suggestionType === 'suggestion' ? "Golf Destination Suggestion" : "",
+    message: suggestionType === 'suggestion' ? "I'd like to suggest the following golf destination:\n\nDestination Name:\nCountry/Region:\nPreferred Golf Courses:\nAccommodation Preferences:\nSpecial Requirements:\n\nPlease provide any additional details about your dream golf destination:" : "",
     submitted: false,
   });
 
@@ -55,10 +58,14 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-16 md:pb-24 bg-[#0F4C3A]">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">Contact The Golf India</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+            {suggestionType === 'suggestion' ? 'Suggest a Golf Destination' : 'Contact The Golf India'}
+          </h1>
           <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-            Join us in making golf a force for good. Whether you're interested in participating in our tournaments, 
-            supporting our initiatives, or learning more about our impact, we're here to help.
+            {suggestionType === 'suggestion' 
+              ? 'Have a dream golf destination in mind? We\'d love to hear your suggestions and help make your golf travel dreams a reality.'
+              : 'Join us in making golf a force for good. Whether you\'re interested in participating in our tournaments, supporting our initiatives, or learning more about our impact, we\'re here to help.'
+            }
           </p>
         </div>
       </section>
@@ -69,7 +76,9 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
-              <h2 className="text-2xl font-bold mb-6">Get Involved</h2>
+              <h2 className="text-2xl font-bold mb-6">
+                {suggestionType === 'suggestion' ? 'Destination Suggestion' : 'Get Involved'}
+              </h2>
               
               {formState.submitted ? (
                 <div className="bg-green-50 border border-green-200 rounded-lg p-6 flex flex-col items-center justify-center space-y-4 text-center">
@@ -78,7 +87,10 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-xl font-semibold text-green-800">Thank You!</h3>
                   <p className="text-green-700">
-                    Your message has been received. We appreciate your interest in making a difference through golf.
+                    {suggestionType === 'suggestion' 
+                      ? 'Thank you for your destination suggestion! We\'ll review it and get back to you within 24 hours.'
+                      : 'Your message has been received. We appreciate your interest in making a difference through golf.'
+                    }
                   </p>
                   <Button 
                     variant="outline" 
@@ -87,8 +99,8 @@ export default function ContactPage() {
                       name: "", 
                       email: "", 
                       phone: "", 
-                      subject: "", 
-                      message: "", 
+                      subject: suggestionType === 'suggestion' ? "Golf Destination Suggestion" : "",
+                      message: suggestionType === 'suggestion' ? "I'd like to suggest the following golf destination:\n\nDestination Name:\nCountry/Region:\nPreferred Golf Courses:\nAccommodation Preferences:\nSpecial Requirements:\n\nPlease provide any additional details about your dream golf destination:" : "",
                       submitted: false 
                     }))}
                     className="mt-4 group"

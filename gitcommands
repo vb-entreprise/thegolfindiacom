@@ -1,0 +1,8 @@
+# First, add all changes to staging
+git add .
+
+# Commit with a descriptive message
+git commit -m "Add suggestion sections to homepage and destinations page"
+
+# Push to remote repository
+git push origin main

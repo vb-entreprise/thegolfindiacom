@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { sendAdminNotification, formatFormDataToHtml, formatFormDataToText } from '@/lib/email';
+import { formatFormDataToHtml, formatFormDataToText } from '@/lib/email';
+import * as nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
   if (request.method !== 'POST') {
@@ -20,13 +21,33 @@ export async function POST(request: Request) {
       }
     }
 
-    const emailData = {
+    // Configure nodemailer transporter
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.GMAIL_USER || 'thegolfindia@gmail.com',
+        pass: process.env.GMAIL_APP_PASSWORD || 'your-app-password-here'
+      }
+    });
+
+    // Email content
+    const mailOptions = {
+      from: process.env.GMAIL_USER || 'thegolfindia@gmail.com',
+      to: process.env.ADMIN_EMAIL || 'thegolfindia@gmail.com',
       subject: `New Contact Form Submission: ${formData.subject}`,
       text: formatFormDataToText(formData),
-      html: formatFormDataToHtml(formData),
+      html: formatFormDataToHtml(formData)
     };
 
-    await sendAdminNotification(emailData);
+    try {
+      // Send email
+      const info = await transporter.sendMail(mailOptions);
+      console.log('Email sent successfully:', info.messageId);
+      console.log('Form Data:', JSON.stringify(formData, null, 2));
+    } catch (emailError) {
+      console.error('Email sending failed:', emailError);
+      console.log('Form Data (email failed):', JSON.stringify(formData, null, 2));
+    }
 
     return NextResponse.json({ success: true, message: 'Form submitted successfully' });
   } catch (error) {
