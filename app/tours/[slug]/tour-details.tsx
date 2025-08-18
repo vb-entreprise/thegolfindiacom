@@ -26,7 +26,9 @@ export function TourDetails({ tour }: TourDetailsProps) {
     // Extract the category from the image path and ensure it's the correct type
     category: image.src.includes("/accommodation/") ? 
       "accommodation" as const : 
-      "golf-courses" as const,
+      image.src.includes("/golf-courses/") ?
+      "golf-courses" as const :
+      "landmarks" as const,
     // Extract the label from the filename (remove extension and replace hyphens with spaces)
     label: image.src.split("/").pop()?.split(".")[0].replace(/-/g, " ") || "",
   }));
@@ -79,7 +81,7 @@ export function TourDetails({ tour }: TourDetailsProps) {
                </div>
                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2">
                  <Star className="w-4 h-4 text-[#D4AF37]" fill="currentColor" />
-                 <span className="text-sm font-medium">{tour.rating}/5 ({tour.reviewCount} reviews)</span>
+                 <span className="text-sm font-medium">{tour.rating > 0 ? `${tour.rating}/5` : 'New'} ({tour.reviewCount > 0 ? `${tour.reviewCount} reviews` : 'No reviews yet'})</span>
                </div>
                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2">
                  <Users className="w-4 h-4 text-[#D4AF37]" />
@@ -159,7 +161,7 @@ export function TourDetails({ tour }: TourDetailsProps) {
                     </div>
                     <div>
                       <p className="text-sm text-gray-500 font-medium">Rating</p>
-                      <p className="font-bold text-[#D4AF37]">{tour.rating}/5 ({tour.reviewCount} reviews)</p>
+                      <p className="font-bold text-[#D4AF37]">{tour.rating > 0 ? `${tour.rating}/5` : 'New'} ({tour.reviewCount > 0 ? `${tour.reviewCount} reviews` : 'No reviews yet'})</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-[#0F4C3A]/5 to-[#1A6B54]/5 rounded-xl border border-[#0F4C3A]/10">
@@ -248,55 +250,18 @@ export function TourDetails({ tour }: TourDetailsProps) {
                   <h3 className="text-3xl font-bold text-[#0F4C3A]">What Our Guests Say</h3>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Sample Reviews */}
-                  <div className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl border border-gray-100">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-[#0F4C3A] to-[#1A6B54] rounded-full flex items-center justify-center text-white font-bold">
-                        JD
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-[#0F4C3A]">John Doe</h4>
-                        <div className="flex items-center gap-1">
-                          {[1,2,3,4,5].map((star) => (
-                            <Star key={star} className="w-4 h-4 text-[#D4AF37]" fill="currentColor" />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                                         <p className="text-gray-700 leading-relaxed">
-                       "Absolutely incredible experience! The destinations were breathtaking and the accommodation was luxurious. Our guide was knowledgeable and friendly."
-                     </p>
-                    <p className="text-sm text-gray-500 mt-3">Traveled in March 2024</p>
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl border border-gray-100">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-[#D4AF37] to-[#F4D03F] rounded-full flex items-center justify-center text-black font-bold">
-                        MS
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-[#0F4C3A]">Mary Smith</h4>
-                        <div className="flex items-center gap-1">
-                          {[1,2,3,4,5].map((star) => (
-                            <Star key={star} className="w-4 h-4 text-[#D4AF37]" fill="currentColor" />
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                                         <p className="text-gray-700 leading-relaxed">
-                       "Perfect organization from start to finish. Every detail was taken care of, allowing us to focus on enjoying our amazing vacation experience."
-                     </p>
-                    <p className="text-sm text-gray-500 mt-3">Traveled in January 2024</p>
-                  </div>
+                <div className="text-center py-8">
+                  <p className="text-gray-600 mb-4">Be the first to review this tour!</p>
+                  <Button variant="outline" size="lg" className="group">
+                    Write a Review
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
                 </div>
                 
                 <div className="text-center mt-8">
-                  <Button variant="outline" size="lg" className="group" asChild>
-                    <Link href="#reviews">
-                      Read All {tour.reviewCount} Reviews
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Link>
+                  <Button variant="outline" size="lg" className="group">
+                    Write the First Review
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </div>
               </div>
@@ -330,11 +295,11 @@ export function TourDetails({ tour }: TourDetailsProps) {
                 <div className="bg-gradient-to-r from-[#0F4C3A] to-[#1A6B54] p-6 text-white">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
-                      <div className="flex items-center gap-1 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                        <Star className="w-4 h-4 text-[#D4AF37]" fill="currentColor" />
-                        <span className="font-bold text-sm">{tour.rating}</span>
-                        <span className="text-white/80 text-xs">({tour.reviewCount})</span>
-                      </div>
+                                          <div className="flex items-center gap-1 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
+                      <Star className="w-4 h-4 text-[#D4AF37]" fill="currentColor" />
+                      <span className="font-bold text-sm">{tour.rating > 0 ? tour.rating : 'New'}</span>
+                      <span className="text-white/80 text-xs">({tour.reviewCount > 0 ? tour.reviewCount : 'No reviews'})</span>
+                    </div>
                     </div>
                     <Badge className="bg-[#D4AF37] text-black border-0 font-semibold">{tour.country}</Badge>
                   </div>

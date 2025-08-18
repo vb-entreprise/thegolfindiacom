@@ -25,12 +25,13 @@ export function getTourGalleryImages(tourSlug: string) {
   interface TourImage {
     src: string;
     alt: string;
-    category: "accommodation" | "golf-courses";
+    category: "accommodation" | "golf-courses" | "landmarks";
     label: string;
   }
 
   let accommodationImages: TourImage[] = [];
   let golfImages: TourImage[] = [];
+  let landmarkImages: TourImage[] = [];
 
   // Handle different tournament packages
   switch (folderName) {
@@ -484,6 +485,15 @@ export function getTourGalleryImages(tourSlug: string) {
           label: "Montgomerie Links Vietnam"
         }
       ];
+
+      landmarkImages = [
+        {
+          src: `/images/${tourPath}/golden-bridge.jpg`,
+          alt: "Golden Bridge at Ba Na Hills",
+          category: "landmarks",
+          label: "Golden Bridge"
+        }
+      ];
       break;
 
     case 'southern-mekong':
@@ -603,5 +613,5 @@ export function getTourGalleryImages(tourSlug: string) {
       break;
   }
 
-  return [...accommodationImages, ...golfImages];
+  return [...accommodationImages, ...golfImages, ...landmarkImages];
 }

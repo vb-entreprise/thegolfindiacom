@@ -35,8 +35,8 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Experience the World Through
-            <span className="block text-[#D4AF37]">World-Class Golf</span>
+            Golfing for a Cause:
+            <span className="block text-[#D4AF37]">Tee Up Change</span>
           </motion.h1>
 
           <motion.p 
@@ -45,7 +45,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Discover iconic courses, luxury accommodations, and unforgettable cultural experiences curated by The Golf India in the most stunning destinations across the globe.
+            Purpose-driven itineraries that pair unforgettable courses with tangible local change.
           </motion.p>
 
           {/* CTA Buttons */}

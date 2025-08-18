@@ -19,8 +19,8 @@ const packagesData = [
     location: "Ho Chi Minh City & Da Nang",
     duration: 7,
     price: 3200,
-    rating: 4.9,
-    reviewCount: 124,
+    rating: 0,
+    reviewCount: 0,
     category: "luxury",
     type: "premium",
     imageSrc: "/images/home/hero-golf.jpg",
@@ -34,8 +34,8 @@ const packagesData = [
     location: "North Vietnam",
     duration: 5,
     price: 1800,
-    rating: 4.7,
-    reviewCount: 89,
+    rating: 0,
+    reviewCount: 0,
     category: "adventure",
     type: "standard",
     imageSrc: "/images/destinations/vietnam-1.jpg",
@@ -49,8 +49,8 @@ const packagesData = [
     location: "Central Vietnam",
     duration: 6,
     price: 2400,
-    rating: 4.8,
-    reviewCount: 156,
+    rating: 0,
+    reviewCount: 0,
     category: "family",
     type: "standard",
     imageSrc: "/images/destinations/vietnam-2.jpg",
@@ -64,8 +64,8 @@ const packagesData = [
     location: "Multiple Locations",
     duration: 4,
     price: 2800,
-    rating: 4.6,
-    reviewCount: 72,
+    rating: 0,
+    reviewCount: 0,
     category: "corporate",
     type: "premium",
     imageSrc: "/images/home/hero-golf.jpg",
@@ -79,8 +79,8 @@ const packagesData = [
     location: "Central Coast",
     duration: 8,
     price: 3800,
-    rating: 4.9,
-    reviewCount: 98,
+    rating: 0,
+    reviewCount: 0,
     category: "couples",
     type: "luxury",
     imageSrc: "/images/destinations/vietnam-3.jpg",
@@ -94,8 +94,8 @@ const packagesData = [
     location: "Da Lat Highlands",
     duration: 10,
     price: 4200,
-    rating: 4.8,
-    reviewCount: 67,
+    rating: 0,
+    reviewCount: 0,
     category: "wellness",
     type: "luxury",
     imageSrc: "/images/destinations/vietnam-1.jpg",
@@ -305,7 +305,7 @@ export default function PackagesPage() {
                       <div className="flex items-center gap-1 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-lg">
                         <Star className="w-4 h-4 text-[#D4AF37]" fill="currentColor" />
                         <span className="font-bold text-[#0F4C3A] text-sm">{pkg.rating}</span>
-                        <span className="text-gray-500 text-xs">({pkg.reviewCount})</span>
+                        <span className="text-gray-500 text-xs">({pkg.reviewCount > 0 ? pkg.reviewCount : 'No reviews'})</span>
                       </div>
                     </div>
 
@@ -354,7 +354,7 @@ export default function PackagesPage() {
                           <div className="w-8 h-8 rounded-full bg-[#0F4C3A]/10 flex items-center justify-center">
                             <Users className="w-4 h-4 text-[#0F4C3A]" />
                           </div>
-                          <span className="text-sm font-medium">{pkg.reviewCount} reviews • {pkg.rating}★</span>
+                          <span className="text-sm font-medium">{pkg.reviewCount > 0 ? `${pkg.reviewCount} reviews` : 'No reviews yet'} • {pkg.rating > 0 ? `${pkg.rating}★` : 'New'}</span>
                         </div>
                       </div>
 

@@ -125,8 +125,8 @@ export function DestinationsShowcase() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Star className="w-5 h-5" fill="currentColor" />
-                    <span className="font-semibold">{destination.rating}</span>
-                    <span className="text-white/80">({destination.courses} reviews)</span>
+                    <span className="font-semibold">{destination.rating > 0 ? destination.rating : 'New'}</span>
+                    <span className="text-white/80">({destination.courses > 0 ? `${destination.courses} reviews` : 'No reviews'})</span>
                   </div>
 
                   <motion.div

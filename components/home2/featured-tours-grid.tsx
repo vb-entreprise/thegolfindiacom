@@ -171,7 +171,7 @@ export function FeaturedToursGrid() {
                       </div>
                       <div className="flex items-center gap-2 text-gray-300">
                         <Star className="w-5 h-5 text-[#D4AF37]" />
-                        <span className="text-sm font-medium">{tour.rating} ({tour.reviewCount})</span>
+                        <span className="text-sm font-medium">{tour.rating > 0 ? tour.rating : 'New'} ({tour.reviewCount > 0 ? tour.reviewCount : 'No reviews'})</span>
                       </div>
                     </div>
 

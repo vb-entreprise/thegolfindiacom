@@ -79,7 +79,7 @@ export function FeaturedTours() {
                   <div className="flex items-center gap-2 mb-4">
                     <Star className="w-5 h-5 text-[#D4AF37]" />
                     <span className="font-semibold">{tour.rating}</span>
-                    <span className="text-gray-500">({tour.reviewCount} reviews)</span>
+                    <span className="text-gray-500">({tour.reviewCount > 0 ? `${tour.reviewCount} reviews` : 'No reviews yet'})</span>
                   </div>
 
                   <h3 className="text-xl font-bold mb-3 group-hover:text-[#0F4C3A] transition-colors">

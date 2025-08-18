@@ -220,7 +220,7 @@ export default function ToursPage() {
                         </div>
                         <div className="flex items-center gap-2 text-gray-600">
                           <Star className="w-4 h-4 text-[#0F4C3A]" />
-                          <span className="text-sm">{tour.rating} ({tour.reviewCount})</span>
+                          <span className="text-sm">{tour.rating > 0 ? tour.rating : 'New'} ({tour.reviewCount > 0 ? tour.reviewCount : 'No reviews'})</span>
                         </div>
                       </div>
                     </div>

@@ -8,7 +8,7 @@ import { Card } from "@/components/ui/card";
 interface TournamentImage {
   src: string;
   alt: string;
-  category: "accommodation" | "golf-courses";
+  category: "accommodation" | "golf-courses" | "landmarks";
   label: string;
 }
 
@@ -20,6 +20,7 @@ interface TournamentGalleryProps {
 export function TournamentGallery({ images, title }: TournamentGalleryProps) {
   const accommodationImages = images.filter(img => img.category === "accommodation");
   const golfImages = images.filter(img => img.category === "golf-courses");
+  const landmarkImages = images.filter(img => img.category === "landmarks");
 
   return (
     <section className="py-12">
@@ -30,6 +31,7 @@ export function TournamentGallery({ images, title }: TournamentGalleryProps) {
           <TabsList className="mb-8">
             <TabsTrigger value="golf-courses">Golf Courses</TabsTrigger>
             <TabsTrigger value="accommodation">Accommodation</TabsTrigger>
+            <TabsTrigger value="landmarks">Landmarks</TabsTrigger>
           </TabsList>
 
           <TabsContent value="golf-courses">
@@ -55,6 +57,26 @@ export function TournamentGallery({ images, title }: TournamentGalleryProps) {
           <TabsContent value="accommodation">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {accommodationImages.map((image, index) => (
+                <Card key={index} className="overflow-hidden">
+                  <div className="relative h-64">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-semibold text-lg">{image.label}</h3>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="landmarks">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {landmarkImages.map((image, index) => (
                 <Card key={index} className="overflow-hidden">
                   <div className="relative h-64">
                     <Image

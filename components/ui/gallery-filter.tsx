@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 type GalleryImage = {
   src: string;
   alt: string;
-  category: "accommodation" | "golf-courses";
+  category: "accommodation" | "golf-courses" | "landmarks";
   label: string;
 };
 
@@ -19,7 +19,7 @@ type GalleryFilterProps = {
 };
 
 export function GalleryFilter({ images, className }: GalleryFilterProps) {
-  const [filter, setFilter] = useState<"all" | "accommodation" | "golf-courses">("all");
+  const [filter, setFilter] = useState<"all" | "accommodation" | "golf-courses" | "landmarks">("all");
 
   const filteredImages = images.filter(
     (image) => filter === "all" || image.category === filter
@@ -57,6 +57,15 @@ export function GalleryFilter({ images, className }: GalleryFilterProps) {
         >
           Golf Courses
         </Button>
+        <Button
+          variant={filter === "landmarks" ? "default" : "outline"}
+          onClick={() => setFilter("landmarks")}
+          className={cn(
+            filter === "landmarks" ? "bg-[#0F4C3A] text-white" : "hover:bg-[#0F4C3A]/10"
+          )}
+        >
+          Landmarks
+        </Button>
       </div>
 
       {/* Gallery Grid */}
@@ -80,7 +89,8 @@ export function GalleryFilter({ images, className }: GalleryFilterProps) {
                 className="absolute top-4 right-4 bg-[#0F4C3A] text-white"
                 variant="secondary"
               >
-                {image.category === "accommodation" ? "Accommodation" : "Golf Course"}
+                {image.category === "accommodation" ? "Accommodation" : 
+                 image.category === "golf-courses" ? "Golf Course" : "Landmark"}
               </Badge>
               {/* Image Label */}
               <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-4 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0">

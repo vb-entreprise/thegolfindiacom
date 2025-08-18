@@ -5,57 +5,17 @@ import { useState, useEffect } from "react";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-const testimonials = [
-  {
-    id: 1,
-    name: "Michael Johnson",
-    location: "United States",
-    rating: 5,
-    text: "Absolutely incredible golf experience in Vietnam! The courses were pristine, the accommodations luxurious, and the cultural experiences unforgettable. Highly recommend!",
-    avatar: "MJ",
-    tour: "Central Heritage Golf Tour"
-  },
-  {
-    id: 2,
-    name: "Sarah Williams",
-    location: "Australia",
-    rating: 5,
-    text: "The luxury north tour exceeded all expectations. World-class golf courses with stunning mountain views, and the service was impeccable throughout.",
-    avatar: "SW",
-    tour: "Luxury North Golf Experience"
-  },
-  {
-    id: 3,
-    name: "David Chen",
-    location: "Singapore",
-    rating: 5,
-    text: "Perfect blend of golf and culture. The Mekong Delta tour offered unique experiences both on and off the course. Will definitely return!",
-    avatar: "DC",
-    tour: "Southern Mekong Golf Adventure"
-  },
-  {
-    id: 4,
-    name: "Emma Thompson",
-    location: "United Kingdom",
-    rating: 5,
-    text: "The North Retreat tour was exactly what we needed - peaceful golf in beautiful surroundings with excellent local guides. Truly memorable experience.",
-    avatar: "ET",
-    tour: "North Retreat Golf Package"
-  },
-  {
-    id: 5,
-    name: "Robert Martinez",
-    location: "Canada",
-    rating: 5,
-    text: "Outstanding service from start to finish. The golf courses were challenging yet enjoyable, and the cultural activities added so much value to the trip.",
-    avatar: "RM",
-    tour: "Central Heritage Golf Tour"
-  }
-];
+// Removed fake testimonials - will be populated with real reviews when available
+const testimonials: any[] = [];
 
 export function TestimonialsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+
+  // Don't show carousel if no testimonials
+  if (testimonials.length === 0) {
+    return null;
+  }
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -241,27 +201,7 @@ export function TestimonialsCarousel() {
           </div>
         </div>
 
-        {/* Stats */}
-        <motion.div 
-          className="grid md:grid-cols-3 gap-8 mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="text-center text-white">
-            <div className="text-3xl font-bold mb-2">98%</div>
-            <div className="text-gray-300">Satisfaction Rate</div>
-          </div>
-          <div className="text-center text-white">
-            <div className="text-3xl font-bold mb-2">1000+</div>
-            <div className="text-gray-300">Happy Golfers</div>
-          </div>
-          <div className="text-center text-white">
-            <div className="text-3xl font-bold mb-2">4.9/5</div>
-            <div className="text-gray-300">Average Rating</div>
-          </div>
-        </motion.div>
+
       </div>
     </section>
   );

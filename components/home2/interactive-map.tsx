@@ -13,7 +13,7 @@ const mapDestinations = [
     name: "Hanoi & North",
     description: "Capital city golf with mountain views",
     courses: 8,
-    rating: 4.8,
+    rating: 0,
     position: { top: "15%", left: "25%" },
     color: "from-[#3498DB] to-[#5DADE2]",
     slug: "hanoi-north"
@@ -23,7 +23,7 @@ const mapDestinations = [
     name: "Halong Bay",
     description: "Coastal golf with stunning bay views",
     courses: 4,
-    rating: 4.9,
+    rating: 0,
     position: { top: "25%", left: "35%" },
     color: "from-[#27AE60] to-[#58D68D]",
     slug: "halong-bay"
@@ -33,7 +33,7 @@ const mapDestinations = [
     name: "Central Heritage",
     description: "Ancient cities and championship courses",
     courses: 12,
-    rating: 4.7,
+    rating: 0,
     position: { top: "45%", left: "45%" },
     color: "from-[#E74C3C] to-[#EC7063]",
     slug: "central-heritage"
@@ -43,7 +43,7 @@ const mapDestinations = [
     name: "Ho Chi Minh City",
     description: "Modern golf in Vietnam's largest city",
     courses: 10,
-    rating: 4.6,
+    rating: 0,
     position: { top: "70%", left: "40%" },
     color: "from-[#F39C12] to-[#F7DC6F]",
     slug: "ho-chi-minh-city"
@@ -53,7 +53,7 @@ const mapDestinations = [
     name: "Mekong Delta",
     description: "Tropical golf paradise",
     courses: 6,
-    rating: 4.5,
+    rating: 0,
     position: { top: "80%", left: "50%" },
     color: "from-[#9B59B6] to-[#BB8FCE]",
     slug: "mekong-delta"
@@ -214,7 +214,7 @@ export function InteractiveMap() {
                           <span>{destination.courses} golf courses</span>
                           <div className="flex items-center gap-1">
                             <Star className="w-4 h-4 text-[#D4AF37]" fill="currentColor" />
-                            <span>{destination.rating}</span>
+                            <span>{destination.rating > 0 ? destination.rating : 'New'}</span>
                           </div>
                         </div>
                       </div>
