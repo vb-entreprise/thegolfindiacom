@@ -51,7 +51,7 @@ export async function sendEmail(subject: string, htmlContent: string, textConten
 
   try {
     // Create transporter with the active configuration
-    const transporter = nodemailer.createTransporter(activeConfig.config);
+    const transporter = nodemailer.createTransport(activeConfig.config);
 
     // Verify connection configuration
     await transporter.verify();
