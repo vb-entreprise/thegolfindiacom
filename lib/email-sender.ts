@@ -80,10 +80,10 @@ export async function sendEmail(subject: string, htmlContent: string, textConten
     console.log('To:', adminEmail);
     console.log('Text Content:', textContent);
     console.log('HTML Content:', htmlContent);
-    console.log('Error:', error.message);
+    console.log('Error:', error instanceof Error ? error.message : String(error));
     console.log('=====================================');
     
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : String(error) };
   }
 }
 
