@@ -7,6 +7,7 @@ import { Providers } from "./providers";
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/react";
 import { PerformanceMonitor } from "@/components/ui/performance-monitor";
+import { siteConfig } from "@/lib/constants";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -15,8 +16,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Golf Vietnam Tours - Premium Golf Tours & Tournaments",
-  description: "Experience world-class golf across Vietnam's most stunning landscapes. Championship courses, luxury accommodations, and unforgettable cultural experiences.",
+  title: `${siteConfig.name} - Premium Golf Tours & Tournaments`,
+  description: "Experience world-class golf tours and tournaments across Asia's most beautiful destinations. Championship courses, luxury accommodations, and unforgettable cultural experiences.",
   other: {
     'viewport': 'width=device-width, initial-scale=1, maximum-scale=5',
   },

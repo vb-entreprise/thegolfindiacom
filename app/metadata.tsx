@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Golf Tourism - Explore the World's Best Golf Destinations",
-  description: "Discover amazing golf destinations and book your next golf vacation with us.",
+  title: `${siteConfig.name} - Experience World-Class Golf Tours Across Asia`,
+  description: "Experience world-class golf tours and tournaments across Asia's most beautiful destinations. Championship courses, luxury accommodations, and unforgettable cultural experiences.",
   keywords: [
     "golf tours",
     "golf vacations",
@@ -11,26 +12,29 @@ export const metadata: Metadata = {
     "golf destinations",
     "golf holidays",
     "golf travel",
+    "Asia golf tours",
+    "golf tournaments",
+    "The Golf India",
   ],
   authors: [
     {
-      name: "Golf Tourism",
-      url: "https://golftourism.com",
+      name: siteConfig.name,
+      url: siteConfig.url,
     },
   ],
-  creator: "Golf Tourism",
+  creator: siteConfig.name,
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://golftourism.com",
-    title: "Golf Tourism - Explore the World's Best Golf Destinations",
-    description: "Discover amazing golf destinations and book your next golf vacation with us.",
-    siteName: "Golf Tourism",
+    url: siteConfig.url,
+    title: `${siteConfig.name} - Experience World-Class Golf Tours Across Asia`,
+    description: "Experience world-class golf tours and tournaments across Asia's most beautiful destinations. Championship courses, luxury accommodations, and unforgettable cultural experiences.",
+    siteName: siteConfig.name,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Golf Tourism - Explore the World's Best Golf Destinations",
-    description: "Discover amazing golf destinations and book your next golf vacation with us.",
-    creator: "@golftourism",
+    title: `${siteConfig.name} - Experience World-Class Golf Tours Across Asia`,
+    description: "Experience world-class golf tours and tournaments across Asia's most beautiful destinations. Championship courses, luxury accommodations, and unforgettable cultural experiences.",
+    creator: "@thegolfindia",
   },
 }; 

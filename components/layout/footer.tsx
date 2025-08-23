@@ -7,6 +7,7 @@ import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin, ArrowRight 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AnimatedGolfBall } from "@/components/ui/animated-golf-ball";
+import { siteConfig } from "@/lib/constants";
 
 const footerLinks = {
   company: [
@@ -79,8 +80,8 @@ export function Footer() {
           >
             <Link href="/" className="inline-block mb-6">
               <Image
-                src="/images/logo/Transperant%20BG.png"
-                alt="Golf Vietnam Tours"
+                src={siteConfig.logo}
+                alt={siteConfig.name}
                 width={200}
                 height={70}
                 className="h-14 w-auto"
@@ -88,7 +89,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-gray-300 mb-6">
-              Experience world-class golf across Vietnam's most stunning landscapes. Championship courses, luxury accommodations, and unforgettable cultural experiences.
+              Experience world-class golf across Asia's most stunning landscapes. Championship courses, luxury accommodations, and unforgettable cultural experiences.
             </p>
             <div className="flex items-center gap-4">
               {socialLinks.map((social) => (
@@ -139,16 +140,16 @@ export function Footer() {
           transition={{ delay: 0.4 }}
         >
           <div className="text-gray-300 text-sm">
-            © {new Date().getFullYear()} Golf Vietnam Tours. All rights reserved.
+            © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </div>
           <div className="flex items-center gap-6">
-            <Link href="tel:+918799395926" className="flex items-center text-gray-300 hover:text-[#D4AF37] transition-colors">
+            <Link href={`tel:+91${siteConfig.contact.phone}`} className="flex items-center text-gray-300 hover:text-[#D4AF37] transition-colors">
               <Phone className="w-4 h-4 mr-2" />
-              +91 8799395926
+              +91 {siteConfig.contact.phone}
             </Link>
-            <Link href="mailto:thegolfindia@gmail.com" className="flex items-center text-gray-300 hover:text-[#D4AF37] transition-colors">
+            <Link href={`mailto:${siteConfig.contact.email}`} className="flex items-center text-gray-300 hover:text-[#D4AF37] transition-colors">
               <Mail className="w-4 h-4 mr-2" />
-              thegolfindia@gmail.com
+              {siteConfig.contact.email}
             </Link>
           </div>
         </motion.div>

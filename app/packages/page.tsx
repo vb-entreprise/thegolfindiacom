@@ -121,8 +121,7 @@ export default function PackagesPage() {
       const matchesType = selectedType === "all" || pkg.type === selectedType;
       const matchesDuration = selectedDuration === "all" || 
                              (selectedDuration === "short" && pkg.duration <= 5) ||
-                             (selectedDuration === "medium" && pkg.duration > 5 && pkg.duration <= 7) ||
-                             (selectedDuration === "long" && pkg.duration > 7);
+                             (selectedDuration === "medium" && pkg.duration > 5 && pkg.duration <= 7);
       
       return matchesSearch && matchesCategory && matchesType && matchesDuration;
     });
@@ -216,7 +215,6 @@ export default function PackagesPage() {
                 <SelectItem value="all">All Durations</SelectItem>
                 <SelectItem value="short">Short (1-5 days)</SelectItem>
                 <SelectItem value="medium">Medium (6-7 days)</SelectItem>
-                <SelectItem value="long">Long (8+ days)</SelectItem>
               </SelectContent>
             </Select>
           </div>

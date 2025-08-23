@@ -20,10 +20,16 @@ function ContactContent() {
     subject: suggestionType === 'suggestion' ? "Golf Destination Suggestion" : "",
     message: suggestionType === 'suggestion' ? "I'd like to suggest the following golf destination:\n\nDestination Name:\nCountry/Region:\nPreferred Golf Courses:\nAccommodation Preferences:\nSpecial Requirements:\n\nPlease provide any additional details about your dream golf destination:" : "",
     submitted: false,
+    error: "",
+    loading: false,
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Reset error state
+    setFormState(prev => ({ ...prev, error: "", loading: true }));
+    
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -39,15 +45,20 @@ function ContactContent() {
         }),
       });
 
+      const result = await response.json();
+
       if (!response.ok) {
-        throw new Error('Failed to submit form');
+        throw new Error(result.error || 'Failed to submit form');
       }
 
-      setFormState(prev => ({ ...prev, submitted: true }));
+      setFormState(prev => ({ ...prev, submitted: true, loading: false }));
     } catch (error) {
       console.error('Error submitting form:', error);
-      // You could add error state handling here
-      alert('Failed to submit form. Please try again.');
+      setFormState(prev => ({ 
+        ...prev, 
+        error: error instanceof Error ? error.message : 'Failed to submit form. Please try again.',
+        loading: false 
+      }));
     }
   };
 
@@ -101,7 +112,9 @@ function ContactContent() {
                       phone: "", 
                       subject: suggestionType === 'suggestion' ? "Golf Destination Suggestion" : "",
                       message: suggestionType === 'suggestion' ? "I'd like to suggest the following golf destination:\n\nDestination Name:\nCountry/Region:\nPreferred Golf Courses:\nAccommodation Preferences:\nSpecial Requirements:\n\nPlease provide any additional details about your dream golf destination:" : "",
-                      submitted: false 
+                      submitted: false,
+                      error: "",
+                      loading: false
                     }))}
                     className="mt-4 group"
                   >
@@ -111,6 +124,11 @@ function ContactContent() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {formState.error && (
+                    <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                      <p className="text-red-700 text-sm">{formState.error}</p>
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -175,8 +193,24 @@ function ContactContent() {
                     />
                   </div>
                   
-                  <Button type="submit" variant="green" size="lg" className="w-full group">
-                    <Send className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" /> Send Message
+                  <Button 
+                    type="submit" 
+                    variant="green" 
+                    size="lg" 
+                    className="w-full group"
+                    disabled={formState.loading}
+                  >
+                    {formState.loading ? (
+                      <>
+                        <div className="w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" /> 
+                        Send Message
+                      </>
+                    )}
                   </Button>
                 </form>
               )}

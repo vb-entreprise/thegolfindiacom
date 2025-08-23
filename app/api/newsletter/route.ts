@@ -1,28 +1,63 @@
 import { NextResponse } from 'next/server';
-import { sendAdminNotification, formatFormDataToHtml, formatFormDataToText } from '@/lib/email';
+import { sendEmail, createEmailContent } from '@/lib/email-sender';
 
 export async function POST(request: Request) {
+  if (request.method !== 'POST') {
+    return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
+  }
+
   try {
     const formData = await request.json();
+    console.log('Received newsletter subscription:', formData);
 
+    // Validate required fields
+    if (!formData.email) {
+      return NextResponse.json(
+        { error: 'Email is required' },
+        { status: 400 }
+      );
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      return NextResponse.json(
+        { error: 'Invalid email format' },
+        { status: 400 }
+      );
+    }
+
+    // Prepare email data
     const emailData = {
-      subject: `New Newsletter Subscription`,
-      text: `New subscriber: ${formData.email}`,
-      html: `
-        <div style="font-family: Arial, sans-serif;">
-          <h2 style="color: #0F4C3A;">New Newsletter Subscription</h2>
-          <p>A new user has subscribed to the newsletter:</p>
-          <p style="font-weight: bold;">${formData.email}</p>
-          <p style="margin-top: 20px; color: #666;">
-            This is an automated message from The Golf India website.
-          </p>
-        </div>
-      `,
+      "Email": formData.email,
     };
 
-    await sendAdminNotification(emailData);
+    // Create email content
+    const { htmlContent, textContent } = createEmailContent("Newsletter Subscription", emailData);
 
-    return NextResponse.json({ success: true });
+    // Send email
+    const emailResult = await sendEmail(
+      `New Newsletter Subscription - ${formData.email}`,
+      htmlContent,
+      textContent
+    );
+
+    if (emailResult.success) {
+      console.log('Newsletter subscription email sent successfully:', emailResult.messageId);
+    } else {
+      console.error('Email sending failed:', emailResult.error);
+    }
+
+    // Log the subscription for debugging
+    console.log('Newsletter subscription processed successfully:', {
+      email: formData.email,
+      timestamp: new Date().toISOString()
+    });
+
+    return NextResponse.json({ 
+      success: true, 
+      message: 'Newsletter subscription successful' 
+    });
   } catch (error) {
     console.error('Error processing newsletter subscription:', error);
     return NextResponse.json(

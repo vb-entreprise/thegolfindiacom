@@ -42,8 +42,7 @@ export default function ToursPage() {
       
       const matchesDuration = selectedDuration === "all" || 
                              (selectedDuration === "short" && tour.duration <= 5) ||
-                             (selectedDuration === "medium" && tour.duration > 5 && tour.duration <= 7) ||
-                             (selectedDuration === "long" && tour.duration > 7);
+                             (selectedDuration === "medium" && tour.duration > 5 && tour.duration <= 7);
       
       return matchesSearch && matchesRegion && matchesDuration;
     });
@@ -110,7 +109,6 @@ export default function ToursPage() {
                 <SelectItem value="all">All Durations</SelectItem>
                 <SelectItem value="short">Short (1-5 days)</SelectItem>
                 <SelectItem value="medium">Medium (6-7 days)</SelectItem>
-                <SelectItem value="long">Long (8+ days)</SelectItem>
               </SelectContent>
             </Select>
 
