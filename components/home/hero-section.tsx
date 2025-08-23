@@ -36,7 +36,7 @@ export function HeroSection() {
             transition={{ duration: 0.8 }}
           >
             Golfing for a Cause:
-            <span className="block text-[#D4AF37]">Tee Up Change</span>
+            <span className="block text-[#D4AF37]">Tee Up for a Change</span>
           </motion.h1>
 
           <motion.p 
@@ -45,7 +45,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Purpose-driven itineraries that pair unforgettable courses with tangible local change.
+            Purpose-driven itineraries that pair unforgettable courses with tangible local experience
           </motion.p>
 
           {/* CTA Buttons */}
