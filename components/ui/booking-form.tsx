@@ -24,6 +24,20 @@ export function BookingForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Client-side validation
+    if (!formData.name || !formData.email || !formData.phone || !formData.numberOfPeople || !startDate || !endDate) {
+      alert("Please fill in all required fields including dates.");
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
     setIsSubmitting(true);
     
     const bookingData = {
@@ -33,6 +47,8 @@ export function BookingForm() {
     };
 
     try {
+      console.log('Submitting booking data:', bookingData);
+      
       const response = await fetch('/api/booking', {
         method: 'POST',
         headers: {
@@ -41,10 +57,13 @@ export function BookingForm() {
         body: JSON.stringify(bookingData),
       });
 
+      console.log('Response status:', response.status);
+      
       const data = await response.json();
+      console.log('Response data:', data);
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to submit booking');
+        throw new Error(data.error || `HTTP error! status: ${response.status}`);
       }
 
       // Clear form after successful submission
@@ -61,7 +80,19 @@ export function BookingForm() {
       alert("Thank you for your booking request! We will contact you shortly.");
     } catch (error) {
       console.error("Error submitting booking:", error);
-      alert("There was an error submitting your booking. Please try again or contact us directly.");
+      
+      // More specific error messages
+      if (error instanceof Error) {
+        if (error.message.includes('Failed to fetch')) {
+          alert("Network error. Please check your internet connection and try again.");
+        } else if (error.message.includes('500')) {
+          alert("Server error. Please try again later or contact us directly.");
+        } else {
+          alert(`Error: ${error.message}`);
+        }
+      } else {
+        alert("There was an error submitting your booking. Please try again or contact us directly.");
+      }
     } finally {
       setIsSubmitting(false);
     }

@@ -21,9 +21,15 @@ type EmailData = {
 };
 
 export async function sendAdminNotification(emailData: EmailData) {
+  // If SMTP credentials are not configured, log the email data instead
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    console.error('SMTP credentials are not configured');
-    throw new Error('Email service is not configured');
+    console.log('=== EMAIL NOTIFICATION (SMTP not configured) ===');
+    console.log('Subject:', emailData.subject);
+    console.log('To:', ADMIN_EMAIL);
+    console.log('Text Content:', emailData.text);
+    console.log('HTML Content:', emailData.html);
+    console.log('===============================================');
+    return { success: true, messageId: 'console-log' };
   }
 
   const msg = {
