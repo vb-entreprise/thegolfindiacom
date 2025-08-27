@@ -22,32 +22,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-const stats = [
-  { 
-    label: "Years of Excellence", 
-    value: "10+", 
-    icon: Trophy,
-    description: "A decade of trusted golf tour leadership"
-  },
-  { 
-    label: "Premium Golf Courses", 
-    value: "25+", 
-    icon: MapPin,
-    description: "Top-tier destinations across the globe"
-  },
-  { 
-    label: "Satisfied Golfers", 
-    value: "1000+", 
-    icon: Users,
-    description: "Delighting golf lovers from all corners of the world"
-  },
-  { 
-    label: "Custom Tour Packages", 
-    value: "15+", 
-    icon: Star,
-    description: "Carefully curated, experience-rich itineraries"
-  },
-];
+
 
 const features = [
   {
@@ -166,37 +141,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="py-20 bg-gradient-to-br from-gray-50 to-[#0F4C3A]/5">
-          <div className="container mx-auto px-4">
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="text-center group"
-                >
-                  <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-white">
-                    <CardContent className="p-8">
-                      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#0F4C3A]/10 mb-4 group-hover:bg-[#0F4C3A]/20 transition-colors">
-                        <stat.icon className="w-8 h-8 text-[#0F4C3A]" />
-                      </div>
-                      <h3 className="text-3xl font-bold text-[#0F4C3A] mb-2">{stat.value}</h3>
-                      <p className="text-lg font-semibold text-gray-800 mb-2">{stat.label}</p>
-                      <p className="text-gray-600 text-sm">{stat.description}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
+
 
         {/* Story Section */}
         <section className="py-20 bg-white">
