@@ -29,15 +29,9 @@ const nextConfig = {
   compress: true,
   // Optimize webpack config for performance
   webpack: (config, { isServer, dev }) => {
-    // Fix cache issues - use memory cache in dev to avoid filesystem issues
-    if (dev) {
-      config.cache = {
-        type: 'memory',
-      };
-    }
-    
-    // Enable persistent caching for better build performance
-    if (!isServer) {
+    // Only apply custom optimizations in production builds
+    // Skip in dev to avoid caching issues
+    if (!dev && !isServer) {
       config.optimization = {
         ...config.optimization,
         splitChunks: {
