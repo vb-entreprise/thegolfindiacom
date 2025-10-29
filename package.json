@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
-    "start": "node server.js",
+    "start": "next start",
     "start:next": "next start",
     "lint": "next lint",
     "optimize-images": "node scripts/optimize-images.js",
