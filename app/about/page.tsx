@@ -191,23 +191,42 @@ export default function AboutPage() {
         </section>
 
         {/* Features Section */}
-        <section className="py-20 bg-gradient-to-br from-[#0F4C3A]/5 to-[#D4AF37]/5">
-          <div className="container mx-auto px-4">
+        <section className="py-24 bg-gradient-to-br from-white via-[#0F4C3A]/3 to-[#D4AF37]/5 relative overflow-hidden">
+          {/* Decorative background elements */}
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute w-96 h-96 -top-48 -right-48 bg-[#0F4C3A] rounded-full blur-3xl"></div>
+            <div className="absolute w-96 h-96 -bottom-48 -left-48 bg-[#D4AF37] rounded-full blur-3xl"></div>
+          </div>
+
+          <div className="container mx-auto px-4 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-center mb-20"
             >
-              <h2 className="text-4xl font-bold text-[#0F4C3A] mb-6">Why Choose Us</h2>
-              <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="inline-block mb-4"
+              >
+                <Badge className="bg-[#D4AF37]/10 text-[#D4AF37] border-[#D4AF37]/20 text-sm px-4 py-1.5 font-semibold">
+                  Our Commitment
+                </Badge>
+              </motion.span>
+              <h2 className="text-5xl md:text-6xl font-bold text-[#0F4C3A] mb-6 tracking-tight">
+                Why Choose Us
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                 We bring together world-class golf, luxury travel, and purpose-driven experiences to create unforgettable journeys that go far beyond the game.
               </p>
             </motion.div>
             
             <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -217,15 +236,49 @@ export default function AboutPage() {
                 <motion.div
                   key={index}
                   variants={itemVariants}
+                  whileHover={{ y: -8 }}
                   className="group"
                 >
-                  <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-white overflow-hidden">
-                    <div className={`${feature.color} p-6 text-white`}>
-                      <feature.icon className="w-12 h-12 mb-4" />
-                      <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                  <Card className="border-0 shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/80 backdrop-blur-sm overflow-hidden relative h-full flex flex-col">
+                    {/* Hover glow effect */}
+                    <div className={`absolute inset-0 ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                    
+                    {/* Icon container with modern design */}
+                    <div className={`relative ${feature.color} p-8 text-white overflow-hidden`}>
+                      {/* Animated background pattern */}
+                      <div className="absolute inset-0 opacity-10">
+                        <div className="absolute w-32 h-32 -top-16 -right-16 bg-white rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                        <div className="absolute w-24 h-24 -bottom-12 -left-12 bg-white rounded-full blur-xl group-hover:scale-125 transition-transform duration-700"></div>
+                      </div>
+                      
+                      <motion.div
+                        className="relative z-10"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <feature.icon className="w-14 h-14 mb-4 drop-shadow-lg" />
+                      </motion.div>
+                      <h3 className="text-2xl font-bold relative z-10">{feature.title}</h3>
                     </div>
-                    <CardContent className="p-6">
-                      <p className="text-gray-700 leading-relaxed">{feature.description}</p>
+                    
+                    <CardContent className="p-8 flex-1 flex flex-col">
+                      <p className="text-gray-700 leading-relaxed text-[15px] flex-1 group-hover:text-gray-900 transition-colors duration-300">
+                        {feature.description}
+                      </p>
+                      
+                      {/* Learn more indicator */}
+                      <motion.div
+                        className="mt-6 pt-6 border-t border-gray-100 group-hover:border-[#0F4C3A]/20 transition-colors duration-300"
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 + 0.3 }}
+                        viewport={{ once: true }}
+                      >
+                        <div className="flex items-center text-[#0F4C3A] font-medium text-sm">
+                          <span className="mr-2 group-hover:mr-4 transition-all duration-300">Learn more</span>
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
+                        </div>
+                      </motion.div>
                     </CardContent>
                   </Card>
                 </motion.div>

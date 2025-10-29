@@ -16,7 +16,6 @@ const footerLinks = {
   ],
   services: [
     { name: "Golf Tours", href: "/tours" },
-    { name: "Tournaments", href: "/tournaments" },
     { name: "Destinations", href: "/destinations" },
   ],
   support: [

@@ -376,6 +376,105 @@ const toursData: Tour[] = [
       lng: 106.6297
     }
   },
+  {
+    id: "5",
+    name: "Ahmedabad Golf & Leisure Experience",
+    slug: "ahmedabad-golf-leisure-experience",
+    description: "Discover Gujarat's finest golf experience, blending luxury, sport, and heritage. Play across three championship courses — Kalhaar Blues & Greens, Kensville Golf & Country Club, and Glade One Golf Club — while staying at elegant golf resorts and the premier Crowne Plaza Ahmedabad City Centre. Enjoy curated transfers, authentic cuisine, leisure options, and seamless service.",
+    shortDescription: "Experience Gujarat's finest golf across three championship courses with luxury accommodations.",
+    duration: 7,
+    price: 60500,
+    currency: "₹",
+    location: "Ahmedabad, Gujarat",
+    country: "India",
+    rating: 0,
+    reviewCount: 0,
+    featured: true,
+    imageSrc: "/images/tournaments/india/ahemdabad/hero.jpg",
+    imageAlt: "Championship golf course in Ahmedabad with luxury resort facilities",
+    gallery: getTourGalleryImages("ahmedabad-golf-leisure-experience"),
+    highlights: [
+      "Play at Kalhaar Blues & Greens Golf Resort, a championship course",
+      "Enjoy a round at Kensville Golf & Country Club",
+      "Tee off at Glade One Golf Club's modern facilities",
+      "Stay at luxurious Kalhaar Blues & Greens Golf Resort",
+      "Experience premium hospitality at Crowne Plaza Ahmedabad City Centre",
+      "Visit Nalsarovar Bird Sanctuary, a UNESCO wetland site",
+      "Explore Ahmedabad's historic sites including Adalaj Stepwell",
+      "Optional city tours and cultural experiences"
+    ],
+    includes: [
+      "6 Nights luxury stay with breakfast (Kalhaar Blues & Greens, Club Mahindra Kensville, Crowne Plaza Ahmedabad)",
+      "4 rounds of golf at championship courses (2×Kalhaar, 1×Kensville, 1×Glade One) with caddie & cart",
+      "Daily breakfast + club lunches as per itinerary",
+      "Airport, inter-hotel & golf course transfers in AC vehicle",
+      "Sightseeing to Nalsarovar Bird Sanctuary + optional city tours",
+      "10% Karma Time Foundation concierge support service charge"
+    ],
+    excludes: [
+      "Flights to/from Ahmedabad",
+      "Travel insurance",
+      "Visa fees (if applicable)",
+      "Tips for guide and driver",
+      "Personal expenses (laundry, drinks, shopping, etc.)",
+      "Extra golf rounds (available at ₹4,000 – ₹5,600 per round)",
+      "Optional premium restaurant dining and spa services"
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival & Relaxation at Kalhaar",
+        description: "Arrive in Ahmedabad and transfer to Kalhaar Blues & Greens Golf Resort. Check in, attend a short orientation session, and unwind with resort facilities.",
+        accommodation: "Kalhaar Blues & Greens Golf Resort",
+        starRating: 5
+      },
+      {
+        day: 2,
+        title: "Golf at Kalhaar & Transfer to Kensville",
+        description: "Morning tee-off at Kalhaar (18 holes). Lunch at the clubhouse. Drive to Kensville Golf & Country Club, check in at Club Mahindra Kensville Resort.",
+        accommodation: "Club Mahindra Kensville Resort",
+        starRating: 4
+      },
+      {
+        day: 3,
+        title: "Golf at Kensville & Nalsarovar Excursion",
+        description: "Enjoy a morning round at Kensville followed by lunch at the club. Afternoon visit to Nalsarovar Bird Sanctuary, a UNESCO wetland site. Evening return to Kalhaar Resort for dinner.",
+        accommodation: "Kalhaar Blues & Greens Golf Resort",
+        starRating: 5
+      },
+      {
+        day: 4,
+        title: "Kalhaar Golf & Transfer to Ahmedabad City",
+        description: "Early golf round at Kalhaar followed by lunch at the club. Later transfer to the city and check in at Crowne Plaza Ahmedabad City Centre. Optional: Visit the historic Adalaj Stepwell & dine at a premium restaurant.",
+        accommodation: "Crowne Plaza Ahmedabad City Centre",
+        starRating: 5
+      },
+      {
+        day: 5,
+        title: "Relaxation & City Exploration",
+        description: "Free day for relaxation or shopping at Law Garden, Sabarmati Riverfront walks, and cultural visits. Optional sightseeing can include Sabarmati Ashram or Heritage Walk of Ahmedabad.",
+        accommodation: "Crowne Plaza Ahmedabad City Centre",
+        starRating: 5
+      },
+      {
+        day: 6,
+        title: "Golf at Glade One & Leisure Evening",
+        description: "Morning tee-off at Glade One Golf Club (2×9 holes). Lunch at the clubhouse. Evening free for fine dining or spa.",
+        accommodation: "Crowne Plaza Ahmedabad City Centre",
+        starRating: 5
+      },
+      {
+        day: 7,
+        title: "Departure",
+        description: "Breakfast and check-out. Private transfer to Ahmedabad Airport or Railway Station.",
+        accommodation: "N/A"
+      }
+    ],
+    mapLocation: {
+      lat: 23.0225,
+      lng: 72.5714
+    }
+  },
   
 ];
 

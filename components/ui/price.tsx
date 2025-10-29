@@ -15,6 +15,9 @@ export function Price({ amount, currency = "$", className }: PriceProps) {
     if (currency === "£") {
       currencyCode = 'GBP';
       locale = 'en-GB';
+    } else if (currency === "₹") {
+      currencyCode = 'INR';
+      locale = 'en-IN';
     }
     
     // Format price in the appropriate currency

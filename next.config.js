@@ -1,41 +1,74 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Remove static export for dynamic deployment
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   images: {
     // Enable image optimization for dynamic deployment
-    domains: ['localhost', 'thegolfindia.com'],
     remotePatterns: [
       {
         protocol: 'https',
         hostname: '**',
       },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },
+      {
+        protocol: 'https',
+        hostname: 'thegolfindia.com',
+      },
     ],
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60,
   },
   // Performance optimizations
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
-  // Disable webpack file system cache to prevent ENOENT errors
-  webpack: (config) => {
-    config.cache = false;
+  // Compress output
+  compress: true,
+  // Optimize webpack config for performance
+  webpack: (config, { isServer, dev }) => {
+    // Fix cache issues in development
+    if (dev) {
+      config.cache = {
+        type: 'filesystem',
+        buildDependencies: {
+          config: [__filename],
+        },
+        cacheDirectory: '.next/cache/webpack',
+      };
+    }
     
-    // Optimize bundle size
-    config.optimization = {
-      ...config.optimization,
-      splitChunks: {
-        chunks: 'all',
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
+    // Enable persistent caching for better build performance
+    if (!isServer) {
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          chunks: 'all',
+          cacheGroups: {
+            default: false,
+            vendors: false,
+            // Vendor chunk for node_modules
+            vendor: {
+              name: 'vendor',
+              chunks: 'all',
+              test: /[\\/]node_modules[\\/]/,
+              priority: 20,
+            },
+            // Common chunk for shared code
+            common: {
+              name: 'common',
+              minChunks: 2,
+              chunks: 'async',
+              priority: 10,
+              reuseExistingChunk: true,
+              enforce: true,
+            },
           },
         },
-      },
-    };
+      };
+    }
     
     return config;
   }

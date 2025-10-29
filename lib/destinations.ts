@@ -100,7 +100,7 @@ const destinationsData: Destination[] = [
 ];
 
 // Function to get all destinations
-export async function getAllDestinations(): Promise<Destination[]> {
+export function getAllDestinations(): Destination[] {
   return destinationsData;
 }
 

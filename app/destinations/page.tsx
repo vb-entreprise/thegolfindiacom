@@ -5,11 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function DestinationsPage() {
-  const destinations = await getAllDestinations();
+  const destinations = getAllDestinations();
 
   // Function to check if a destination is coming soon
   const isComingSoon = (name: string) => {
-    return ["United Kingdom", "India", "Thailand", "Canada"].includes(name);
+    return ["United Kingdom", "Thailand", "Canada"].includes(name);
   };
 
   return (

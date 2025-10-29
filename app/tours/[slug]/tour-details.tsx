@@ -26,9 +26,7 @@ export function TourDetails({ tour }: TourDetailsProps) {
     // Extract the category from the image path and ensure it's the correct type
     category: image.src.includes("/accommodation/") ? 
       "accommodation" as const : 
-      image.src.includes("/golf-courses/") ?
-      "golf-courses" as const :
-      "landmarks" as const,
+      "golf-courses" as const,
     // Extract the label from the filename (remove extension and replace hyphens with spaces)
     label: image.src.split("/").pop()?.split(".")[0].replace(/-/g, " ") || "",
   }));
@@ -42,6 +40,15 @@ export function TourDetails({ tour }: TourDetailsProps) {
           backgroundImage: `linear-gradient(135deg, rgba(15, 76, 58, 0.8), rgba(26, 107, 84, 0.6)), url(${tour.imageSrc})` 
         }}
       >
+        {/* Preload critical hero image */}
+        <Image
+          src={tour.imageSrc}
+          alt={tour.imageAlt}
+          fill
+          className="object-cover -z-10"
+          priority
+          sizes="100vw"
+        />
         {/* Animated Background Elements */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute w-96 h-96 -top-48 -right-48 bg-[#D4AF37] rounded-full blur-3xl animate-pulse" />
@@ -231,15 +238,17 @@ export function TourDetails({ tour }: TourDetailsProps) {
               )}
 
               {/* Enhanced Gallery */}
-              <div className="bg-white rounded-2xl shadow-xl p-8 border-0">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                    <Award className="w-6 h-6 text-white" />
+              {galleryImages.length > 0 && (
+                <div className="bg-white rounded-2xl shadow-xl p-8 border-0">
+                  <div className="flex items-center gap-3 mb-8">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                      <Award className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-3xl font-bold text-[#0F4C3A]">Photo Gallery</h3>
                   </div>
-                  <h3 className="text-3xl font-bold text-[#0F4C3A]">Photo Gallery</h3>
+                  <GalleryFilter images={galleryImages} />
                 </div>
-                <GalleryFilter images={galleryImages} />
-              </div>
+              )}
 
               {/* Customer Reviews */}
               <div className="bg-white rounded-2xl shadow-xl p-8 border-0">

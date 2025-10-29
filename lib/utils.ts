@@ -14,27 +14,153 @@ export function getTourGalleryImages(tourSlug: string) {
       'luxury-north-vietnam-golf-cruise': 'luxury-north',
       'north-vietnam-golf-retreat': 'north-retreat',
       'central-vietnam-heritage-golf': 'central-heritage',
-      'southern-vietnam-golf-mekong': 'southern-mekong'
+      'southern-vietnam-golf-mekong': 'southern-mekong',
+      'ahmedabad-golf-leisure-experience': 'ahemdabad'
     };
     return mapping[slug] || slug.split('-').slice(0, 2).join('-');
   };
 
   const folderName = getFolderName(tourSlug);
-  const tourPath = `tournaments/vietnam/${folderName}`;
+  
+  // Check if it's an India tour
+  const isIndiaTour = tourSlug.includes('ahmedabad');
+  const tourPath = isIndiaTour 
+    ? `tournaments/india/${folderName}`
+    : `tournaments/vietnam/${folderName}`;
   
   interface TourImage {
     src: string;
     alt: string;
-    category: "accommodation" | "golf-courses" | "landmarks";
+    category: "accommodation" | "golf-courses";
     label: string;
   }
 
   let accommodationImages: TourImage[] = [];
   let golfImages: TourImage[] = [];
-  let landmarkImages: TourImage[] = [];
 
   // Handle different tournament packages
   switch (folderName) {
+    case 'ahemdabad':
+      accommodationImages = [
+        { 
+          src: `/images/${tourPath}/accommodation/crowne plaza 1.webp`,
+          alt: "Crowne Plaza Ahmedabad City Centre",
+          category: "accommodation",
+          label: "Crowne Plaza Ahmedabad"
+        },
+        { 
+          src: `/images/${tourPath}/accommodation/crown plaza 2.jpeg`,
+          alt: "Crowne Plaza Ahmedabad City Centre",
+          category: "accommodation",
+          label: "Crowne Plaza Ahmedabad"
+        },
+        { 
+          src: `/images/${tourPath}/accommodation/crown plaza 3.webp`,
+          alt: "Crowne Plaza Ahmedabad City Centre",
+          category: "accommodation",
+          label: "Crowne Plaza Ahmedabad"
+        },
+        { 
+          src: `/images/${tourPath}/accommodation/crown plaza m.jpeg`,
+          alt: "Crowne Plaza Ahmedabad City Centre",
+          category: "accommodation",
+          label: "Crowne Plaza Ahmedabad"
+        },
+        { 
+          src: `/images/${tourPath}/accommodation/kensville 1.jpg`,
+          alt: "Club Mahindra Kensville Golf Resort",
+          category: "accommodation",
+          label: "Club Mahindra Kensville"
+        },
+        { 
+          src: `/images/${tourPath}/accommodation/kensville 2.jpg`,
+          alt: "Club Mahindra Kensville Golf Resort",
+          category: "accommodation",
+          label: "Club Mahindra Kensville"
+        },
+        { 
+          src: `/images/${tourPath}/accommodation/kensville 3.jpg`,
+          alt: "Club Mahindra Kensville Golf Resort",
+          category: "accommodation",
+          label: "Club Mahindra Kensville"
+        },
+        { 
+          src: `/images/${tourPath}/accommodation/kensville 4.jpg`,
+          alt: "Club Mahindra Kensville Golf Resort",
+          category: "accommodation",
+          label: "Club Mahindra Kensville"
+        }
+      ];
+
+      golfImages = [
+        {
+          src: `/images/${tourPath}/golf-courses/kalhar 1.webp`,
+          alt: "Kalhaar Blues & Greens Golf Club",
+          category: "golf-courses",
+          label: "Kalhaar Blues & Greens"
+        },
+        {
+          src: `/images/${tourPath}/golf-courses/kalhar 2.webp`,
+          alt: "Kalhaar Blues & Greens Golf Club",
+          category: "golf-courses",
+          label: "Kalhaar Blues & Greens"
+        },
+        {
+          src: `/images/${tourPath}/golf-courses/kalhar 3.webp`,
+          alt: "Kalhaar Blues & Greens Golf Club",
+          category: "golf-courses",
+          label: "Kalhaar Blues & Greens"
+        },
+        {
+          src: `/images/${tourPath}/golf-courses/kensville 1.jpg`,
+          alt: "Kensville Golf & Country Club",
+          category: "golf-courses",
+          label: "Kensville Golf & Country Club"
+        },
+        {
+          src: `/images/${tourPath}/golf-courses/kensville 2.jpg`,
+          alt: "Kensville Golf & Country Club",
+          category: "golf-courses",
+          label: "Kensville Golf & Country Club"
+        },
+        {
+          src: `/images/${tourPath}/golf-courses/kensville 3.jpg`,
+          alt: "Kensville Golf & Country Club",
+          category: "golf-courses",
+          label: "Kensville Golf & Country Club"
+        },
+        {
+          src: `/images/${tourPath}/golf-courses/kensville 4.jpg`,
+          alt: "Kensville Golf & Country Club",
+          category: "golf-courses",
+          label: "Kensville Golf & Country Club"
+        },
+        {
+          src: `/images/${tourPath}/golf-courses/kensville 5.jpg`,
+          alt: "Kensville Golf & Country Club",
+          category: "golf-courses",
+          label: "Kensville Golf & Country Club"
+        },
+        {
+          src: `/images/${tourPath}/golf-courses/glade one 1.jpg`,
+          alt: "Glade One Golf Club",
+          category: "golf-courses",
+          label: "Glade One Golf Club"
+        },
+        {
+          src: `/images/${tourPath}/golf-courses/glade one 2.jpg`,
+          alt: "Glade One Golf Club",
+          category: "golf-courses",
+          label: "Glade One Golf Club"
+        },
+        {
+          src: `/images/${tourPath}/golf-courses/glade one 3.jpg`,
+          alt: "Glade One Golf Club",
+          category: "golf-courses",
+          label: "Glade One Golf Club"
+        }
+      ];
+      break;
     case 'central-coast':
       accommodationImages = [
         { 
@@ -486,14 +612,6 @@ export function getTourGalleryImages(tourSlug: string) {
         }
       ];
 
-      landmarkImages = [
-        {
-          src: `/images/${tourPath}/golden-bridge.jpg`,
-          alt: "Golden Bridge at Ba Na Hills",
-          category: "landmarks",
-          label: "Golden Bridge"
-        }
-      ];
       break;
 
     case 'southern-mekong':
@@ -613,5 +731,5 @@ export function getTourGalleryImages(tourSlug: string) {
       break;
   }
 
-  return [...accommodationImages, ...golfImages, ...landmarkImages];
+  return [...accommodationImages, ...golfImages];
 }

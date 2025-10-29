@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -19,7 +21,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         green: "bg-gradient-to-r from-[#0F4C3A] to-[#1A6B54] text-white hover:from-[#1A6B54] hover:to-[#2D8A6F] shadow-lg hover:shadow-xl",
-        gold: "bg-gradient-to-r from-[#D4AF37] to-[#F4D03F] text-white hover:from-[#F4D03F] hover:to-[#E67E22] shadow-lg hover:shadow-xl",
+        gold: "bg-gradient-to-r from-[#D4AF37] to-[#F4D03F] text-[#0F4C3A] hover:from-[#F4D03F] hover:to-[#E67E22] hover:text-[#0F4C3A] shadow-lg hover:shadow-xl font-bold",
         premium: "bg-gradient-to-r from-[#8B5CF6] to-[#A855F7] text-white hover:from-[#A855F7] hover:to-[#9333EA] shadow-lg hover:shadow-xl",
         glassmorphism: "bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 shadow-lg hover:shadow-xl",
       },

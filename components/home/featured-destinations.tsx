@@ -4,17 +4,16 @@ import { MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getAllDestinations } from "@/lib/destinations";
 
-export async function FeaturedDestinations() {
-  const destinations = await getAllDestinations();
-  // Filter to show only Vietnam as active destination
+export function FeaturedDestinations() {
+  const destinations = getAllDestinations();
+  // Filter to show active destinations (those with available packages)
   const featuredDestinations = destinations.filter(dest => 
-    dest.name === "Vietnam"
+    dest.name === "Vietnam" || dest.name === "India"
   );
 
   // Coming soon destinations
   const comingSoonDestinations = destinations.filter(dest => 
     dest.name === "United Kingdom" || 
-    dest.name === "India" || 
     dest.name === "Thailand" ||
     dest.name === "Canada"
   );

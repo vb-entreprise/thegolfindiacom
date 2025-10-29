@@ -9,7 +9,7 @@ import { Destination } from "@/lib/types";
 import { TourCard } from "@/components/ui/tour-card";
 
 export async function generateStaticParams() {
-  const destinations = await getAllDestinations();
+  const destinations = getAllDestinations();
   return destinations.map((destination) => ({
     slug: destination.slug,
   }));
