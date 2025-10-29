@@ -25,6 +25,9 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
+  // Add empty turbopack config to silence Next.js 16 error when using webpack
+  // This tells Next.js we explicitly want to use webpack, not Turbopack
+  turbopack: {},
   // Compress output
   compress: true,
   // Optimize webpack config for performance
