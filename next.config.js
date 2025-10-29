@@ -29,14 +29,10 @@ const nextConfig = {
   compress: true,
   // Optimize webpack config for performance
   webpack: (config, { isServer, dev }) => {
-    // Fix cache issues in development
+    // Fix cache issues - use memory cache in dev to avoid filesystem issues
     if (dev) {
       config.cache = {
-        type: 'filesystem',
-        buildDependencies: {
-          config: [__filename],
-        },
-        cacheDirectory: '.next/cache/webpack',
+        type: 'memory',
       };
     }
     

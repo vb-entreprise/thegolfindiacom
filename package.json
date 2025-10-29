@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "node server.js",
     "start:next": "next start",
     "lint": "next lint",
     "optimize-images": "node scripts/optimize-images.js",
-    "build:optimized": "npm run optimize-images && next build"
+    "build:optimized": "npm run optimize-images && next build --webpack"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
