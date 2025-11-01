@@ -4,33 +4,43 @@ import nodemailer from 'nodemailer';
 export async function sendEmail(subject: string, htmlContent: string, textContent: string) {
   const adminEmail = process.env.ADMIN_EMAIL || 'thegolfindia@gmail.com';
   
+  // Get environment variables (server-side only - never use NEXT_PUBLIC_ for sensitive data)
+  // In Vercel, add these in Project Settings > Environment Variables
+  const gmailUser = process.env.GMAIL_USER;
+  const gmailPass = process.env.GMAIL_APP_PASSWORD;
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPass = process.env.SMTP_PASS;
+  const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
+  const smtpPort = process.env.SMTP_PORT || '587';
+  const smtpSecure = process.env.SMTP_SECURE === 'true';
+  
   // Try multiple email service configurations
   const emailConfigs = [
-    // Gmail configuration
+    // Gmail configuration (preferred)
     {
       name: 'Gmail',
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_APP_PASSWORD,
+      user: gmailUser,
+      pass: gmailPass,
       config: {
         service: 'gmail',
         auth: {
-          user: process.env.GMAIL_USER,
-          pass: process.env.GMAIL_APP_PASSWORD,
+          user: gmailUser,
+          pass: gmailPass,
         },
       }
     },
     // Custom SMTP configuration
     {
       name: 'Custom SMTP',
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      user: smtpUser,
+      pass: smtpPass,
       config: {
-        host: process.env.SMTP_HOST || 'smtp.gmail.com',
-        port: parseInt(process.env.SMTP_PORT || '587'),
-        secure: process.env.SMTP_SECURE === 'true',
+        host: smtpHost,
+        port: parseInt(smtpPort),
+        secure: smtpSecure,
         auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
+          user: smtpUser,
+          pass: smtpPass,
         },
       }
     }
@@ -42,18 +52,28 @@ export async function sendEmail(subject: string, htmlContent: string, textConten
   if (!activeConfig) {
     console.error('=== EMAIL CONFIGURATION ERROR ===');
     console.error('No email credentials found in environment variables.');
-    console.error('Please configure one of the following:');
-    console.error('  - GMAIL_USER and GMAIL_APP_PASSWORD (for Gmail)');
-    console.error('  - SMTP_USER, SMTP_PASS, SMTP_HOST (for custom SMTP)');
+    console.error('');
+    console.error('For LOCAL development (.env.local):');
+    console.error('  GMAIL_USER=your-email@gmail.com');
+    console.error('  GMAIL_APP_PASSWORD=your-app-password');
+    console.error('  ADMIN_EMAIL=thegolfindia@gmail.com');
+    console.error('');
+    console.error('For VERCEL deployment:');
+    console.error('  1. Go to Vercel Dashboard > Your Project > Settings > Environment Variables');
+    console.error('  2. Add GMAIL_USER, GMAIL_APP_PASSWORD, and ADMIN_EMAIL');
+    console.error('  3. Make sure to select the correct environment (Production, Preview, Development)');
+    console.error('  4. Redeploy your application after adding variables');
+    console.error('');
+    console.error('Alternative: Use SMTP_USER, SMTP_PASS, SMTP_HOST, SMTP_PORT for custom SMTP');
     console.error('');
     console.error('Email details that would have been sent:');
     console.error('Subject:', subject);
     console.error('To:', adminEmail);
-    console.error('Text Content:', textContent);
+    console.error('Text Content:', textContent.substring(0, 200) + '...');
     console.error('===========================================================');
     return { 
       success: false, 
-      error: 'Email service not configured. Please set GMAIL_USER/GMAIL_APP_PASSWORD or SMTP credentials in environment variables.',
+      error: 'Email service not configured. Check server logs for setup instructions.',
       messageId: null 
     };
   }

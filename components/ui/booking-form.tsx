@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { startOfDay, isBefore, isAfter, isSameDay } from "date-fns";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/hooks/use-toast";
 
 interface FormErrors {
   name?: string;
@@ -30,14 +31,18 @@ interface FormErrors {
   endDate?: string;
 }
 
-export function BookingForm() {
+interface BookingFormProps {
+  onSuccess?: () => void;
+}
+
+export function BookingForm({ onSuccess }: BookingFormProps = {}) {
+  const { toast } = useToast();
   const [startDate, setStartDate] = useState<Date>();
   const [endDate, setEndDate] = useState<Date>();
   const [startMonth, setStartMonth] = useState<Date>(new Date());
   const [endMonth, setEndMonth] = useState<Date>(new Date());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -61,19 +66,10 @@ export function BookingForm() {
     setErrors(prev => ({ ...prev, startDate: undefined }));
     
     // If end date is before or equal to the new start date, reset end date
+    // But DON'T auto-change the month - let user navigate manually
     if (endDate && (isBefore(endDate, selectedDate) || isSameDay(endDate, selectedDate))) {
       setEndDate(undefined);
       setErrors(prev => ({ ...prev, endDate: undefined }));
-      // Set end month to show the month after start date
-      const nextMonth = new Date(selectedDate);
-      nextMonth.setMonth(nextMonth.getMonth() + 1);
-      setEndMonth(nextMonth);
-    } else if (endDate && isAfter(endDate, selectedDate)) {
-      setEndMonth(endDate);
-    } else {
-      const nextMonth = new Date(selectedDate);
-      nextMonth.setMonth(nextMonth.getMonth() + 1);
-      setEndMonth(nextMonth);
     }
   };
 
@@ -138,7 +134,6 @@ export function BookingForm() {
     }
 
     setIsSubmitting(true);
-    setIsSuccess(false);
     
     const bookingData = {
       ...formData,
@@ -161,6 +156,13 @@ export function BookingForm() {
         throw new Error(data.error || `HTTP error! status: ${response.status}`);
       }
 
+      // Show success toast popup immediately
+      toast({
+        title: "Booking Request Submitted! 🎉",
+        description: "Thank you for your booking request. We will contact you shortly to confirm your reservation.",
+        className: "bg-green-50 border-green-500 text-green-900",
+      });
+
       // Clear form after successful submission
       setFormData({
         name: "",
@@ -174,10 +176,13 @@ export function BookingForm() {
       setStartMonth(new Date());
       setEndMonth(new Date());
       setErrors({});
-      setIsSuccess(true);
 
-      // Reset success message after 5 seconds
-      setTimeout(() => setIsSuccess(false), 5000);
+      // Close the modal after 2 seconds if onSuccess callback is provided
+      if (onSuccess) {
+        setTimeout(() => {
+          onSuccess();
+        }, 2000);
+      }
     } catch (error) {
       console.error("Error submitting booking:", error);
       
@@ -209,17 +214,6 @@ export function BookingForm() {
     <div className="w-full max-w-6xl mx-auto">
       <Card className="border-0 shadow-xl bg-gradient-to-br from-white to-gray-50/50 overflow-hidden">
         <CardContent className="p-0">
-          {/* Success Message */}
-          {isSuccess && (
-            <div className="bg-green-50 border-l-4 border-green-500 p-4 m-6 rounded-r-lg flex items-center gap-3 animate-in slide-in-from-top">
-              <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0" />
-              <div>
-                <p className="text-green-800 font-medium">Booking request submitted successfully!</p>
-                <p className="text-green-700 text-sm mt-1">We will contact you shortly to confirm your booking.</p>
-              </div>
-            </div>
-          )}
-
           {/* Error Message */}
           {errors.name && errors.name.includes("error") && (
             <div className="bg-red-50 border-l-4 border-red-500 p-4 m-6 rounded-r-lg flex items-center gap-3">

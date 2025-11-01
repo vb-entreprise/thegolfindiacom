@@ -360,7 +360,7 @@ export function TourDetails({ tour }: TourDetailsProps) {
                       </DialogTrigger>
                       <DialogContent className="max-w-4xl w-[95vw] max-h-[90vh] overflow-y-auto p-4 sm:p-6">
                         <DialogTitle className="sr-only">Book Your Golf Tour</DialogTitle>
-                        <BookingForm />
+                        <BookingForm onSuccess={() => setIsBookingOpen(false)} />
                       </DialogContent>
                     </Dialog>
                     
