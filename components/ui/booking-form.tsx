@@ -22,12 +22,32 @@ export function BookingForm() {
     specialRequirements: "",
   });
 
+  // Handle start date selection
+  const handleStartDateSelect = (date: Date | undefined) => {
+    setStartDate(date);
+    // If end date is before the new start date, reset end date
+    if (date && endDate && endDate < date) {
+      setEndDate(undefined);
+    }
+  };
+
+  // Handle end date selection
+  const handleEndDateSelect = (date: Date | undefined) => {
+    setEndDate(date);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Client-side validation
     if (!formData.name || !formData.email || !formData.phone || !formData.numberOfPeople || !startDate || !endDate) {
       alert("Please fill in all required fields including dates.");
+      return;
+    }
+
+    // Validate date range
+    if (endDate <= startDate) {
+      alert("End date must be after start date.");
       return;
     }
 
@@ -190,11 +210,18 @@ export function BookingForm() {
                   <Calendar
                     mode="single"
                     selected={startDate}
-                    onSelect={setStartDate}
+                    onSelect={handleStartDateSelect}
                     className="w-full"
-                    disabled={(date) =>
-                      date < new Date() || (endDate ? date > endDate : false)
-                    }
+                    disabled={(date) => {
+                      const today = new Date();
+                      today.setHours(0, 0, 0, 0);
+                      const dateToCheck = new Date(date);
+                      dateToCheck.setHours(0, 0, 0, 0);
+                      // Disable past dates and dates after end date (if end date is set)
+                      return dateToCheck < today || (endDate ? dateToCheck > endDate : false);
+                    }}
+                    fromDate={new Date()}
+                    defaultMonth={startDate || new Date()}
                     required
                   />
                 </div>
@@ -205,11 +232,21 @@ export function BookingForm() {
                   <Calendar
                     mode="single"
                     selected={endDate}
-                    onSelect={setEndDate}
+                    onSelect={handleEndDateSelect}
                     className="w-full"
-                    disabled={(date) =>
-                      date < new Date() || (startDate ? date < startDate : false)
-                    }
+                    disabled={(date) => {
+                      const today = new Date();
+                      today.setHours(0, 0, 0, 0);
+                      const dateToCheck = new Date(date);
+                      dateToCheck.setHours(0, 0, 0, 0);
+                      // Disable past dates and dates before start date (if start date is set)
+                      const minDate = startDate || today;
+                      const minDateCheck = new Date(minDate);
+                      minDateCheck.setHours(0, 0, 0, 0);
+                      return dateToCheck < minDateCheck;
+                    }}
+                    fromDate={startDate || new Date()}
+                    defaultMonth={endDate || startDate || new Date()}
                     required
                   />
                 </div>
