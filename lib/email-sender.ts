@@ -40,13 +40,22 @@ export async function sendEmail(subject: string, htmlContent: string, textConten
   const activeConfig = emailConfigs.find(config => config.user && config.pass);
 
   if (!activeConfig) {
-    console.log('=== EMAIL NOTIFICATION (No email credentials configured) ===');
-    console.log('Subject:', subject);
-    console.log('To:', adminEmail);
-    console.log('Text Content:', textContent);
-    console.log('HTML Content:', htmlContent);
-    console.log('===========================================================');
-    return { success: true, messageId: 'console-log' };
+    console.error('=== EMAIL CONFIGURATION ERROR ===');
+    console.error('No email credentials found in environment variables.');
+    console.error('Please configure one of the following:');
+    console.error('  - GMAIL_USER and GMAIL_APP_PASSWORD (for Gmail)');
+    console.error('  - SMTP_USER, SMTP_PASS, SMTP_HOST (for custom SMTP)');
+    console.error('');
+    console.error('Email details that would have been sent:');
+    console.error('Subject:', subject);
+    console.error('To:', adminEmail);
+    console.error('Text Content:', textContent);
+    console.error('===========================================================');
+    return { 
+      success: false, 
+      error: 'Email service not configured. Please set GMAIL_USER/GMAIL_APP_PASSWORD or SMTP credentials in environment variables.',
+      messageId: null 
+    };
   }
 
   try {

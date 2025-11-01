@@ -60,27 +60,34 @@ export async function POST(request: Request) {
       textContent
     );
 
-    if (emailResult.success) {
-      console.log('Booking email sent successfully:', emailResult.messageId);
-    } else {
-      console.error('Email sending failed:', emailResult.error);
-    }
-
     // Log the booking for debugging
-    console.log('Booking processed successfully:', {
+    console.log('Booking processed:', {
       name: formData.name,
       email: formData.email,
       phone: formData.phone,
       numberOfPeople: formData.numberOfPeople,
       startDate: formData.startDate,
       endDate: formData.endDate,
+      emailSent: emailResult.success,
       timestamp: new Date().toISOString()
     });
 
-    return NextResponse.json({ 
-      success: true, 
-      message: 'Booking request submitted successfully' 
-    });
+    if (emailResult.success) {
+      console.log('Booking email sent successfully:', emailResult.messageId);
+      return NextResponse.json({ 
+        success: true, 
+        message: 'Booking request submitted successfully. We will contact you shortly!' 
+      });
+    } else {
+      console.error('Email sending failed:', emailResult.error);
+      // Still return success to user, but log the error for admin
+      // The booking data is still logged to console for manual processing
+      return NextResponse.json({ 
+        success: true, 
+        message: 'Booking request received. We will contact you shortly!',
+        warning: 'Email notification may have failed. Please check server logs.'
+      }, { status: 200 });
+    }
   } catch (error) {
     console.error('Error processing booking form:', error);
     return NextResponse.json(
