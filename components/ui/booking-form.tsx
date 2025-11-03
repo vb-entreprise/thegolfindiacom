@@ -369,7 +369,7 @@ export function BookingForm({ onSuccess }: BookingFormProps = {}) {
                       Start Date *
                     </Label>
                     <div className={cn(
-                      "border border-gray-300 rounded-lg p-5 bg-white shadow-lg transition-all min-w-[320px]",
+                      "border border-gray-300 rounded-lg p-3 md:p-5 bg-white shadow-lg transition-all w-full overflow-x-auto",
                       errors.startDate ? "border-red-500" : "hover:border-[#0F4C3A]/40"
                     )}>
                       <Calendar
@@ -381,19 +381,19 @@ export function BookingForm({ onSuccess }: BookingFormProps = {}) {
                         className="w-full"
                         classNames={{
                           months: "flex flex-col space-y-4",
-                          month: "space-y-4",
+                          month: "space-y-4 w-full",
                           caption: "flex justify-between pt-1 pb-3 relative items-center px-1",
-                          caption_label: "text-lg font-semibold text-gray-900",
+                          caption_label: "text-base md:text-lg font-semibold text-gray-900",
                           nav: "flex items-center gap-1",
-                          nav_button: "h-8 w-8 p-0 border border-gray-300 rounded hover:bg-gray-100",
+                          nav_button: "h-8 w-8 md:h-9 md:w-9 p-0 border border-gray-300 rounded hover:bg-gray-100 touch-manipulation",
                           nav_button_previous: "absolute left-1",
                           nav_button_next: "absolute right-1",
                           table: "w-full border-collapse mt-2",
-                          head_row: "flex mb-2",
-                          head_cell: "text-gray-600 w-10 h-10 font-semibold text-sm flex items-center justify-center",
+                          head_row: "flex mb-2 w-full",
+                          head_cell: "text-gray-600 flex-1 font-semibold text-xs md:text-sm flex items-center justify-center min-w-0",
                           row: "flex w-full mb-1",
-                          cell: "h-10 w-10 text-center text-sm p-0 relative flex items-center justify-center",
-                          day: "h-10 w-10 p-0 font-normal rounded hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 transition-colors",
+                          cell: "flex-1 text-center text-sm p-0 relative flex items-center justify-center min-w-0 aspect-square",
+                          day: "w-full h-10 md:h-10 min-h-[44px] md:min-h-[40px] p-0 font-normal rounded hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 transition-colors touch-manipulation active:bg-gray-200",
                           day_selected: "bg-[#0F4C3A] text-white hover:bg-[#0F4C3A] hover:text-white focus:bg-[#0F4C3A] focus:text-white font-semibold",
                           day_today: "bg-blue-100 text-blue-900 font-semibold ring-2 ring-blue-300",
                           day_disabled: "text-gray-300 opacity-40 cursor-not-allowed hover:bg-transparent",
@@ -431,7 +431,7 @@ export function BookingForm({ onSuccess }: BookingFormProps = {}) {
                       End Date *
                     </Label>
                     <div className={cn(
-                      "border border-gray-300 rounded-lg p-5 bg-white shadow-lg transition-all min-w-[320px]",
+                      "border border-gray-300 rounded-lg p-3 md:p-5 bg-white shadow-lg transition-all w-full overflow-x-auto",
                       errors.endDate ? "border-red-500" : "hover:border-[#0F4C3A]/40"
                     )}>
                       <Calendar
@@ -443,19 +443,19 @@ export function BookingForm({ onSuccess }: BookingFormProps = {}) {
                         className="w-full"
                         classNames={{
                           months: "flex flex-col space-y-4",
-                          month: "space-y-4",
+                          month: "space-y-4 w-full",
                           caption: "flex justify-between pt-1 pb-3 relative items-center px-1",
-                          caption_label: "text-lg font-semibold text-gray-900",
+                          caption_label: "text-base md:text-lg font-semibold text-gray-900",
                           nav: "flex items-center gap-1",
-                          nav_button: "h-8 w-8 p-0 border border-gray-300 rounded hover:bg-gray-100",
+                          nav_button: "h-8 w-8 md:h-9 md:w-9 p-0 border border-gray-300 rounded hover:bg-gray-100 touch-manipulation",
                           nav_button_previous: "absolute left-1",
                           nav_button_next: "absolute right-1",
                           table: "w-full border-collapse mt-2",
-                          head_row: "flex mb-2",
-                          head_cell: "text-gray-600 w-10 h-10 font-semibold text-sm flex items-center justify-center",
+                          head_row: "flex mb-2 w-full",
+                          head_cell: "text-gray-600 flex-1 font-semibold text-xs md:text-sm flex items-center justify-center min-w-0",
                           row: "flex w-full mb-1",
-                          cell: "h-10 w-10 text-center text-sm p-0 relative flex items-center justify-center",
-                          day: "h-10 w-10 p-0 font-normal rounded hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 transition-colors",
+                          cell: "flex-1 text-center text-sm p-0 relative flex items-center justify-center min-w-0 aspect-square",
+                          day: "w-full h-10 md:h-10 min-h-[44px] md:min-h-[40px] p-0 font-normal rounded hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 transition-colors touch-manipulation active:bg-gray-200",
                           day_selected: "bg-[#0F4C3A] text-white hover:bg-[#0F4C3A] hover:text-white focus:bg-[#0F4C3A] focus:text-white font-semibold",
                           day_today: "bg-blue-100 text-blue-900 font-semibold ring-2 ring-blue-300",
                           day_disabled: "text-gray-300 opacity-40 cursor-not-allowed hover:bg-transparent",
