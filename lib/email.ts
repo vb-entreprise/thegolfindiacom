@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'thegolfindia@gmail.com';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'info@karmatimefoundation.org';
 
 type EmailData = {
   subject: string;
@@ -33,7 +33,7 @@ export async function sendAdminNotification(emailData: EmailData) {
   }
 
   const msg = {
-    from: process.env.FROM_EMAIL || `"${siteConfig.name}" <thegolfindia@gmail.com>`,
+    from: process.env.FROM_EMAIL || `"${siteConfig.name}" <info@karmatimefoundation.org>`,
     to: ADMIN_EMAIL,
     subject: emailData.subject,
     text: emailData.text,

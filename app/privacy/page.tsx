@@ -150,7 +150,7 @@ export default function PrivacyPage() {
               If you have questions about this Privacy Policy, please contact us:
             </p>
             <div className="space-y-2 text-gray-600">
-                             <p>Email: thegolfindia@gmail.com</p>
+                             <p>Email: info@karmatimefoundation.org</p>
                               <p>Phone: +91 8799395926</p>
               <p>Address: 123 Golf Street, Hanoi, Vietnam</p>
             </div>

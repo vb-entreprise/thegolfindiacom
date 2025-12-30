@@ -92,15 +92,15 @@ export function PromotionalPopup() {
 
             {/* Description */}
             <DialogDescription className="text-white/90 text-lg mb-6 space-y-2">
-              <p className="font-semibold">
+              <span className="block font-semibold">
                 For our first 20 customers only!
-              </p>
-              <p className="text-base">
+              </span>
+              <span className="block text-base">
                 Book any golf tour package and get an exclusive 20% discount on your booking.
-              </p>
-              <p className="text-sm text-white/80 mt-4">
+              </span>
+              <span className="block text-sm text-white/80 mt-4">
                 Limited time offer - Don't miss out!
-              </p>
+              </span>
             </DialogDescription>
 
             {/* CTA Buttons */}

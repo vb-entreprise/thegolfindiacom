@@ -206,7 +206,7 @@ export default async function DestinationsPage() {
                     </Link>
                   </Button>
                   <p className="text-center text-gray-300 text-xs mt-4">
-                    Or email us directly at <span className="text-[#D4AF37]">suggestions@golftravel.com</span>
+                    Or email us directly at <span className="text-[#D4AF37]">info@karmatimefoundation.org</span>
                   </p>
                 </div>
               </div>

@@ -12,7 +12,7 @@ export const siteConfig = {
     facebook: "https://facebook.com/thegolfindia",
   },
   contact: {
-    email: "thegolfindia@gmail.com",
+    email: "info@karmatimefoundation.org",
     phone: "8799395926",
     website: "thegolfindia.com"
   }

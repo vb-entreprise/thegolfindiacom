@@ -29,7 +29,6 @@ const destinationsData: Destination[] = [
     imageSrc: "/images/destinations/uk/london.jpg",
     imageAlt: "Iconic London skyline with Big Ben and the River Thames",
     featuredCourses: [
-      "St Andrews Old Course",
       "Royal Troon Golf Club",
       "Carnoustie Golf Links",
       "Muirfield Golf Club"
@@ -48,7 +47,6 @@ const destinationsData: Destination[] = [
     imageSrc: "/images/destinations/india/india-golf.png",
     imageAlt: "Golf course in India with traditional architecture and scenic views",
     featuredCourses: [
-      "DLF Golf Club",
       "Royal Calcutta Golf Club",
       "Bombay Presidency Golf Club",
       "Delhi Golf Club"

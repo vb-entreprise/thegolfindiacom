@@ -383,8 +383,8 @@ const toursData: Tour[] = [
     description: "Discover Gujarat's finest golf experience, blending luxury, sport, and heritage. Play across three championship courses — Kalhaar Blues & Greens, Kensville Golf & Country Club, and Glade One Golf Club — while staying at elegant golf resorts and the premier Crowne Plaza Ahmedabad City Centre. Enjoy curated transfers, authentic cuisine, leisure options, and seamless service.",
     shortDescription: "Experience Gujarat's finest golf across three championship courses with luxury accommodations.",
     duration: 7,
-    price: 60500,
-    currency: "₹",
+    price: 730,
+    currency: "$",
     location: "Ahmedabad, Gujarat",
     country: "India",
     rating: 0,
@@ -417,7 +417,7 @@ const toursData: Tour[] = [
       "Visa fees (if applicable)",
       "Tips for guide and driver",
       "Personal expenses (laundry, drinks, shopping, etc.)",
-      "Extra golf rounds (available at ₹4,000 – ₹5,600 per round)",
+      "Extra golf rounds (available at $48 – $67 per round)",
       "Optional premium restaurant dining and spa services"
     ],
     itinerary: [

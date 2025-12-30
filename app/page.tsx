@@ -14,10 +14,6 @@ const CommunitySpotlight = dynamic(() => import("@/components/home/community-spo
   loading: () => <div className="py-16 animate-pulse"><div className="h-96 bg-gray-200 rounded"></div></div>
 });
 
-const Newsletter = dynamic(() => import("@/components/home/newsletter").then(mod => ({ default: mod.Newsletter })), {
-  loading: () => <div className="py-16 animate-pulse"><div className="h-48 bg-gray-200 rounded"></div></div>
-});
-
 export default function HomePage() {
   return (
     <main className="min-h-screen">
@@ -30,9 +26,6 @@ export default function HomePage() {
         <FeaturedTours />
       </Suspense>
       <FeaturedDestinations />
-      <Suspense fallback={<div className="py-16 animate-pulse"><div className="h-48 bg-gray-200 rounded"></div></div>}>
-        <Newsletter />
-      </Suspense>
       <PromotionalPopup />
     </main>
   );

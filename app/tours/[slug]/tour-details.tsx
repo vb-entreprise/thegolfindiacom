@@ -342,7 +342,7 @@ export function TourDetails({ tour }: TourDetailsProps) {
                       </Link>
                     </Button>
                     <Button variant="outline" size="sm" className="group" asChild>
-                      <Link href="mailto:thegolfindia@gmail.com">
+                      <Link href="mailto:info@karmatimefoundation.org">
                         <Mail className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
                         Email Us
                       </Link>

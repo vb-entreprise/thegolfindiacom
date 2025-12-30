@@ -139,7 +139,8 @@ export function Footer() {
           transition={{ delay: 0.4 }}
         >
           <div className="text-gray-300 text-sm">
-            © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+            <div>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</div>
+            <div className="mt-2 text-gray-400">All prices are displayed in USD (US Dollars).</div>
           </div>
           <div className="flex items-center gap-6">
             <Link href={`tel:+91${siteConfig.contact.phone}`} className="flex items-center text-gray-300 hover:text-[#D4AF37] transition-colors">

@@ -75,7 +75,7 @@ export function CallToAction() {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              Join thousands of golfers who have experienced the perfect blend of world-class golf and authentic Vietnamese culture. Let us create your dream golf vacation.
+              Experience the perfect blend of world-class golf and authentic Vietnamese culture. Let us create your dream golf vacation.
             </motion.p>
 
             {/* Features */}
@@ -120,7 +120,7 @@ export function CallToAction() {
               </div>
               <div className="flex items-center gap-3 text-white">
                 <Mail className="w-5 h-5 text-[#D4AF37]" />
-                <span className="text-lg font-semibold">thegolfindia@gmail.com</span>
+                <span className="text-lg font-semibold">info@karmatimefoundation.org</span>
               </div>
             </motion.div>
           </motion.div>
@@ -206,7 +206,7 @@ export function CallToAction() {
                       ))}
                     </div>
                     <p className="text-sm text-gray-300">
-                      Trusted by 1000+ golfers worldwide
+                      Premium golf experiences
                     </p>
                   </div>
                 </motion.div>

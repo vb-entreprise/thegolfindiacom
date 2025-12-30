@@ -94,7 +94,7 @@ export default function TermsPage() {
                 Our payment and pricing terms include:
               </p>
               <ul className="list-disc list-inside text-gray-600 space-y-2 ml-4">
-                <li>All prices are in the displayed currency and subject to change</li>
+                <li>All prices are in USD (US Dollars) and subject to change</li>
                 <li>Payments are processed through secure payment gateways</li>
                 <li>Additional fees may apply for special requests or modifications</li>
                 <li>Group discounts are subject to availability and terms</li>
@@ -117,7 +117,7 @@ export default function TermsPage() {
               For questions about these Terms of Service, please contact us:
             </p>
             <div className="space-y-2 text-gray-600">
-                             <p>Email: thegolfindia@gmail.com</p>
+                             <p>Email: info@karmatimefoundation.org</p>
                               <p>Phone: +91 8799395926</p>
               <p>Address: 123 Golf Street, Hanoi, Vietnam</p>
             </div>

@@ -46,9 +46,9 @@ export function AboutSection() {
                   <Calendar className="h-6 w-6 text-[#0F4C3A]" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-1">Global Events</h3>
+                  <h3 className="font-bold text-lg mb-1">Global Countries</h3>
                   <p className="text-muted-foreground text-sm">
-                    Exclusive golf tournaments and purpose-driven events throughout the year
+                    These are the countries where we are available: Vietnam, India, Thailand
                   </p>
                 </div>
               </div>

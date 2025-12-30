@@ -2,28 +2,16 @@
 
 interface PriceProps {
   amount: number;
-  currency?: string;
+  currency?: string; // Kept for backward compatibility, but always uses USD
   className?: string;
 }
 
 export function Price({ amount, currency = "$", className }: PriceProps) {
   try {
-    // Determine currency format based on currency symbol
-    let currencyCode = 'USD';
-    let locale = 'en-US';
-    
-    if (currency === "£") {
-      currencyCode = 'GBP';
-      locale = 'en-GB';
-    } else if (currency === "₹") {
-      currencyCode = 'INR';
-      locale = 'en-IN';
-    }
-    
-    // Format price in the appropriate currency
-    const formattedPrice = new Intl.NumberFormat(locale, {
+    // All prices are in USD
+    const formattedPrice = new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: currencyCode,
+      currency: 'USD',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(amount);
@@ -31,6 +19,6 @@ export function Price({ amount, currency = "$", className }: PriceProps) {
     return <span className={className}>{formattedPrice}</span>;
   } catch (error) {
     console.error('Error formatting price:', error);
-    return <span className={className}>{currency}{amount}</span>;
+    return <span className={className}>${amount}</span>;
   }
 } 

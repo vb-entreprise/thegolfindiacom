@@ -88,7 +88,7 @@ function ContactContent() {
             {/* Contact Form */}
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
               <h2 className="text-2xl font-bold mb-6">
-                {suggestionType === 'suggestion' ? 'Destination Suggestion' : 'Get Involved'}
+                {suggestionType === 'suggestion' ? 'Destination Suggestion' : 'Contact Us'}
               </h2>
               
               {formState.submitted ? (
@@ -245,8 +245,8 @@ function ContactContent() {
                     <p className="text-muted-foreground">
                       For partnerships, donations, or general inquiries
                     </p>
-                    <a href="mailto:thegolfindia@gmail.com" className="text-[#0F4C3A] font-medium hover:underline mt-1 block">
-thegolfindia@gmail.com
+                    <a href="mailto:info@karmatimefoundation.org" className="text-[#0F4C3A] font-medium hover:underline mt-1 block">
+info@karmatimefoundation.org
                     </a>
                   </div>
                 </div>
@@ -258,7 +258,7 @@ thegolfindia@gmail.com
                   <div>
                     <h3 className="font-bold text-lg mb-1">Support Our Cause</h3>
                     <p className="text-muted-foreground">
-                      Make a difference in the lives of caddies and their families through our initiatives
+                      Make a difference in the lives of caddies and their families through initiatives by Karma Time Foundation
                     </p>
                     <div className="mt-2 space-y-2">
                       <div className="text-gray-700">• Caddie Welfare Fund</div>
@@ -303,14 +303,14 @@ thegolfindia@gmail.com
       {/* Map Section */}
       <section className="h-[400px] relative">
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2196.741107685738!2d-2.7993950481562374!3d56.34218583494435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x488650981912f9fb%3A0x5526fe4b9a9554f9!2sThe%20Old%20Course%20at%20St%20Andrews%20Links!5e0!3m2!1sen!2sus!4v1649259268437!5m2!1sen!2sus" 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58868.135036484895!2d72.5714!3d23.0225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
           width="100%" 
           height="100%" 
           style={{ border: 0 }} 
           allowFullScreen 
           loading="lazy" 
           referrerPolicy="no-referrer-when-downgrade"
-          title="GolfJourneys Office Location"
+          title="Ahmedabad Golf Courses Map"
         ></iframe>
       </section>
       

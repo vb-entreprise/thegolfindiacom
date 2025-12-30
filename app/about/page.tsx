@@ -155,13 +155,13 @@ export default function AboutPage() {
               >
                 <h2 className="text-4xl font-bold text-[#0F4C3A] mb-6">Our Story</h2>
                 <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  Born out of a deep love for golf and a commitment to meaningful travel, The Golf India has been curating unforgettable golf experiences for over a decade. What began as a simple idea — to bring golfers together through exceptional courses — has evolved into a global journey of sport, luxury, and purpose.
+                  Born out of a deep love for golf and a commitment to meaningful travel, The Golf India curates unforgettable golf experiences. Our vision is to bring golfers together through exceptional courses, creating a journey that combines sport, luxury, and purpose.
                 </p>
                 <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                   Our mission is to connect passionate golfers with the world's finest golf destinations, blending championship-level play with premium hospitality and culturally rich experiences.
                 </p>
                 <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                  Today, we're proud to be a trusted name in golf tourism, having introduced thousands of golfers to journeys that go far beyond the greens — creating memories, friendships, and impact along the way.
+                  We're committed to creating golf journeys that go far beyond the greens — helping create memories, friendships, and meaningful impact along the way.
                 </p>
                 <div className="flex items-center gap-4">
                   <CheckCircle className="w-6 h-6 text-[#138808]" />
@@ -373,7 +373,7 @@ export default function AboutPage() {
                     <div>
                       <h3 className="text-xl font-bold text-[#0F4C3A] mb-2">Email Us</h3>
                       <p className="text-gray-700 mb-2">For bookings, partnerships, or general inquiries:</p>
-                                              <a href="mailto:thegolfindia@gmail.com" className="text-[#0F4C3A] font-semibold hover:underline">thegolfindia@gmail.com</a>
+                                              <a href="mailto:info@karmatimefoundation.org" className="text-[#0F4C3A] font-semibold hover:underline">info@karmatimefoundation.org</a>
                     </div>
                   </div>
 
@@ -423,7 +423,7 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <h4 className="text-lg font-semibold text-[#0F4C3A] mb-2">Can businesses collaborate with The Golf India?</h4>
-                    <p className="text-gray-700">Absolutely. We welcome travel agencies, corporate groups, and sponsors to partner with us for premium golf experiences and brand activations.</p>
+                    <p className="text-gray-700">We partner with select travel agencies, corporate groups, and sponsors to curate world-class golf experiences.</p>
                   </div>
                 </div>
               </motion.div>
@@ -440,9 +440,9 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-bold text-white mb-6">Ready to Experience Vietnam Golf?</h2>
+              <h2 className="text-4xl font-bold text-white mb-6">Ready to Experience World-Class Golf?</h2>
               <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-                Join us for an unforgettable golf journey through Vietnam's most beautiful destinations. 
+                Join us for an unforgettable golf journey through beautiful destinations around the world. 
                 Let us craft the perfect experience for you.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

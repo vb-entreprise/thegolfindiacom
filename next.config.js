@@ -32,6 +32,22 @@ const nextConfig = {
   compress: true,
   // Optimize webpack config for performance
   webpack: (config, { isServer, dev }) => {
+    // Use memory cache in dev mode to avoid PackFileCacheStrategy errors
+    // This is faster and more reliable for development
+    if (dev) {
+      config.cache = {
+        type: 'memory',
+      };
+    } else if (config.cache && config.cache.type === 'filesystem') {
+      // In production, configure filesystem cache properly
+      config.cache = {
+        ...config.cache,
+        buildDependencies: {
+          config: [__filename],
+        },
+      };
+    }
+    
     // Only apply custom optimizations in production builds
     // Skip in dev to avoid caching issues
     if (!dev && !isServer) {
