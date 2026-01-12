@@ -15,18 +15,30 @@ export function getTourGalleryImages(tourSlug: string) {
       'north-vietnam-golf-retreat': 'north-retreat',
       'central-vietnam-heritage-golf': 'central-heritage',
       'southern-vietnam-golf-mekong': 'southern-mekong',
-      'ahmedabad-golf-leisure-experience': 'ahemdabad'
+      'ahmedabad-golf-leisure-experience': 'ahemdabad',
+      'bangkok-golf-experience': 'bangkok',
+      'phuket-golf-paradise': 'phuket',
+      'hua-hin-golf-beach-retreat': 'hua-hin',
+      'pattaya-golf-entertainment': 'pattaya'
     };
     return mapping[slug] || slug.split('-').slice(0, 2).join('-');
   };
 
   const folderName = getFolderName(tourSlug);
   
-  // Check if it's an India tour
+  // Check which country the tour belongs to
   const isIndiaTour = tourSlug.includes('ahmedabad');
-  const tourPath = isIndiaTour 
-    ? `tournaments/india/${folderName}`
-    : `tournaments/vietnam/${folderName}`;
+  const isThailandTour = tourSlug.includes('bangkok') || tourSlug.includes('phuket') || 
+                         tourSlug.includes('hua-hin') || tourSlug.includes('pattaya');
+  
+  let tourPath: string;
+  if (isIndiaTour) {
+    tourPath = `tournaments/india/${folderName}`;
+  } else if (isThailandTour) {
+    tourPath = `tournaments/thailand/${folderName}`;
+  } else {
+    tourPath = `tournaments/vietnam/${folderName}`;
+  }
   
   interface TourImage {
     src: string;
@@ -728,6 +740,15 @@ export function getTourGalleryImages(tourSlug: string) {
           label: "Vietnam Golf & Country Club"
         }
       ];
+      break;
+
+    // Thailand Tours - No images for now
+    case 'bangkok':
+    case 'phuket':
+    case 'hua-hin':
+    case 'pattaya':
+      accommodationImages = [];
+      golfImages = [];
       break;
   }
 

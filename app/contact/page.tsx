@@ -245,8 +245,8 @@ function ContactContent() {
                     <p className="text-muted-foreground">
                       For partnerships, donations, or general inquiries
                     </p>
-                    <a href="mailto:info@karmatimefoundation.org" className="text-[#0F4C3A] font-medium hover:underline mt-1 block">
-info@karmatimefoundation.org
+                    <a href="mailto:info@thegolfindia.com" className="text-[#0F4C3A] font-medium hover:underline mt-1 block">
+info@thegolfindia.com
                     </a>
                   </div>
                 </div>
@@ -261,7 +261,6 @@ info@karmatimefoundation.org
                       Make a difference in the lives of caddies and their families through initiatives by Karma Time Foundation
                     </p>
                     <div className="mt-2 space-y-2">
-                      <div className="text-gray-700">• Caddie Welfare Fund</div>
                       <div className="text-gray-700">• Child Education Support</div>
                       <div className="text-gray-700">• Medical Emergency Aid</div>
                     </div>

@@ -77,7 +77,7 @@ export default function DonatePage() {
                 <ul className="space-y-4">
                   <li className="flex items-center gap-3">
                     <Heart className="w-5 h-5 text-[#D4AF37]" />
-                    <span>100% of donations go directly to caddie welfare</span>
+                    <span>100% of donations go directly to our programs</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <Users className="w-5 h-5 text-[#D4AF37]" />

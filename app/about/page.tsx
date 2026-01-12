@@ -373,7 +373,7 @@ export default function AboutPage() {
                     <div>
                       <h3 className="text-xl font-bold text-[#0F4C3A] mb-2">Email Us</h3>
                       <p className="text-gray-700 mb-2">For bookings, partnerships, or general inquiries:</p>
-                                              <a href="mailto:info@karmatimefoundation.org" className="text-[#0F4C3A] font-semibold hover:underline">info@karmatimefoundation.org</a>
+                                              <a href="mailto:info@thegolfindia.com" className="text-[#0F4C3A] font-semibold hover:underline">info@thegolfindia.com</a>
                     </div>
                   </div>
 

@@ -86,39 +86,7 @@ export default function AboutKTFPage() {
                 As the foundation behind The Golf India, KTF uses golf tourism as a platform to raise awareness, generate support, and directly fund its charitable programs. Every golf tour we organize carries a purpose.
               </p>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <Card className="p-6">
-                  <CardContent className="pt-6">
-                    <div className="flex items-center mb-4">
-                      <div className="bg-[#0F4C3A]/10 p-3 rounded-full mr-4">
-                        <Heart className="h-6 w-6 text-[#0F4C3A]" />
-                      </div>
-                      <h3 className="text-xl font-bold">💼 Caddie Welfare Program</h3>
-                    </div>
-                    <p className="text-muted-foreground mb-4">
-                      Through our events, KTF supports golf caddies and their families with:
-                    </p>
-                    <ul className="space-y-2 text-muted-foreground">
-                      <li className="flex items-start">
-                        <span className="text-[#0F4C3A] mr-2">•</span>
-                        Emergency medical assistance
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-[#0F4C3A] mr-2">•</span>
-                        Full sponsorship for a child's first year of school
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-[#0F4C3A] mr-2">•</span>
-                        Annual Diwali gifts for those not using other benefits
-                      </li>
-                      <li className="flex items-start">
-                        <span className="text-[#0F4C3A] mr-2">•</span>
-                        Welfare enrollment for just ₹100/month
-                      </li>
-                    </ul>
-                  </CardContent>
-                </Card>
-
+              <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 max-w-2xl mx-auto">
                 <Card className="p-6">
                   <CardContent className="pt-6">
                     <div className="flex items-center mb-4">

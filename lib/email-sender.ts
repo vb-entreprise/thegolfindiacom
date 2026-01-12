@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 
 // Enhanced email sender that supports multiple email services
 export async function sendEmail(subject: string, htmlContent: string, textContent: string) {
-  const adminEmail = process.env.ADMIN_EMAIL || 'info@karmatimefoundation.org';
+  const adminEmail = process.env.ADMIN_EMAIL || 'info@thegolfindia.com';
   
   // Get environment variables (server-side only - never use NEXT_PUBLIC_ for sensitive data)
   // In Vercel, add these in Project Settings > Environment Variables
@@ -56,7 +56,7 @@ export async function sendEmail(subject: string, htmlContent: string, textConten
     console.error('For LOCAL development (.env.local):');
     console.error('  GMAIL_USER=your-email@gmail.com');
     console.error('  GMAIL_APP_PASSWORD=your-app-password');
-    console.error('  ADMIN_EMAIL=info@karmatimefoundation.org');
+    console.error('  ADMIN_EMAIL=info@thegolfindia.com');
     console.error('');
     console.error('For VERCEL deployment:');
     console.error('  1. Go to Vercel Dashboard > Your Project > Settings > Environment Variables');

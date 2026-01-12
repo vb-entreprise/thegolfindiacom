@@ -117,7 +117,7 @@ export default function TermsPage() {
               For questions about these Terms of Service, please contact us:
             </p>
             <div className="space-y-2 text-gray-600">
-                             <p>Email: info@karmatimefoundation.org</p>
+                             <p>Email: info@thegolfindia.com</p>
                               <p>Phone: +91 8799395926</p>
               <p>Address: 123 Golf Street, Hanoi, Vietnam</p>
             </div>

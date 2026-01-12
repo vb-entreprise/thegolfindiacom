@@ -475,6 +475,345 @@ const toursData: Tour[] = [
       lng: 72.5714
     }
   },
+  {
+    id: "6",
+    name: "Bangkok Golf Experience",
+    slug: "bangkok-golf-experience",
+    description: "Discover Thailand's capital city while playing at world-class golf courses. Experience the perfect blend of urban excitement and championship golf in Bangkok, featuring top-rated courses and luxury accommodations.",
+    shortDescription: "Championship golf in Thailand's vibrant capital city.",
+    duration: 5,
+    price: 850,
+    currency: "$",
+    location: "Bangkok",
+    country: "Thailand",
+    rating: 0,
+    reviewCount: 0,
+    featured: true,
+    imageSrc: "/images/destinations/thailand/thailand-golf.jpg",
+    imageAlt: "Golf course in Bangkok, Thailand with modern city skyline",
+    gallery: getTourGalleryImages("bangkok-golf-experience"),
+    highlights: [
+      "Play at Alpine Golf Club, one of Thailand's premier courses",
+      "Tee off at Thai Country Club, host of international tournaments",
+      "Experience the championship layout at Royal Gems Golf City",
+      "Stay at luxury hotels in the heart of Bangkok",
+      "Explore vibrant street markets and world-class dining",
+      "Visit iconic temples and cultural landmarks",
+      "Enjoy traditional Thai spa treatments"
+    ],
+    includes: [
+      "4 nights in 5-star luxury hotels",
+      "3 rounds of golf at championship courses",
+      "Daily breakfast",
+      "Airport transfers and golf course transportation",
+      "Local English-speaking golf guide",
+      "Golf cart and caddie fees"
+    ],
+    excludes: [
+      "International flights",
+      "Visa fees (if applicable)",
+      "Personal expenses",
+      "Tips for guide and caddies",
+      "Travel insurance",
+      "Optional activities and spa treatments"
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival – Bangkok",
+        description: "Airport pickup and transfer to hotel. Check-in and welcome briefing. Evening at leisure to explore the city.",
+        accommodation: "5-Star Luxury Hotel",
+        starRating: 5
+      },
+      {
+        day: 2,
+        title: "Golf at Alpine Golf Club",
+        description: "Breakfast at hotel. Morning round at Alpine Golf Club. Afternoon free for city exploration or spa treatment.",
+        accommodation: "5-Star Luxury Hotel",
+        starRating: 5
+      },
+      {
+        day: 3,
+        title: "Golf at Thai Country Club",
+        description: "Early breakfast. Golf at Thai Country Club, one of Thailand's most prestigious courses. Evening free for dining and nightlife.",
+        accommodation: "5-Star Luxury Hotel",
+        starRating: 5
+      },
+      {
+        day: 4,
+        title: "Golf at Royal Gems Golf City",
+        description: "Final round at Royal Gems Golf City. Afternoon cultural tour or shopping. Farewell dinner (optional).",
+        accommodation: "5-Star Luxury Hotel",
+        starRating: 5
+      },
+      {
+        day: 5,
+        title: "Departure",
+        description: "Breakfast and check-out. Transfer to airport for departure.",
+        accommodation: "N/A"
+      }
+    ],
+    mapLocation: {
+      lat: 13.7563,
+      lng: 100.5018
+    }
+  },
+  {
+    id: "7",
+    name: "Phuket Golf Paradise",
+    slug: "phuket-golf-paradise",
+    description: "Combine world-class golf with tropical paradise in Phuket. Play at stunning coastal courses while enjoying pristine beaches, luxury resorts, and the vibrant island atmosphere of Thailand's premier beach destination.",
+    shortDescription: "Tropical golf experience on Thailand's most beautiful island.",
+    duration: 6,
+    price: 1200,
+    currency: "$",
+    location: "Phuket",
+    country: "Thailand",
+    rating: 0,
+    reviewCount: 0,
+    featured: true,
+    imageSrc: "/images/destinations/thailand/thailand-golf.jpg",
+    imageAlt: "Coastal golf course in Phuket with ocean views and palm trees",
+    gallery: getTourGalleryImages("phuket-golf-paradise"),
+    highlights: [
+      "Play at Blue Canyon Country Club, host of multiple international tournaments",
+      "Tee off at Red Mountain Golf Club with stunning mountain views",
+      "Experience Laguna Phuket Golf Club's championship layout",
+      "Stay at luxury beachfront resorts",
+      "Enjoy pristine beaches and crystal-clear waters",
+      "Explore Phuket's vibrant nightlife and dining scene",
+      "Optional island hopping and water sports"
+    ],
+    includes: [
+      "5 nights in 5-star beachfront resorts",
+      "4 rounds of golf at premier courses",
+      "Daily breakfast",
+      "Airport transfers and golf course transportation",
+      "Local English-speaking golf guide",
+      "Golf cart and caddie fees"
+    ],
+    excludes: [
+      "International flights",
+      "Visa fees (if applicable)",
+      "Personal expenses",
+      "Tips for guide and caddies",
+      "Travel insurance",
+      "Optional activities and excursions"
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival – Phuket",
+        description: "Airport pickup and transfer to beachfront resort. Check-in and welcome briefing. Evening at leisure.",
+        accommodation: "5-Star Beachfront Resort",
+        starRating: 5
+      },
+      {
+        day: 2,
+        title: "Golf at Blue Canyon Country Club",
+        description: "Breakfast at resort. Morning round at Blue Canyon Country Club. Afternoon beach time or spa treatment.",
+        accommodation: "5-Star Beachfront Resort",
+        starRating: 5
+      },
+      {
+        day: 3,
+        title: "Golf at Red Mountain Golf Club",
+        description: "Early breakfast. Golf at Red Mountain Golf Club with spectacular views. Afternoon free for beach activities.",
+        accommodation: "5-Star Beachfront Resort",
+        starRating: 5
+      },
+      {
+        day: 4,
+        title: "Golf at Laguna Phuket",
+        description: "Golf at Laguna Phuket Golf Club. Afternoon island exploration or water sports. Evening dining at resort.",
+        accommodation: "5-Star Beachfront Resort",
+        starRating: 5
+      },
+      {
+        day: 5,
+        title: "Free Day or Additional Golf",
+        description: "Free day for relaxation, beach activities, or optional additional golf round. Optional island hopping tour.",
+        accommodation: "5-Star Beachfront Resort",
+        starRating: 5
+      },
+      {
+        day: 6,
+        title: "Departure",
+        description: "Breakfast and check-out. Transfer to Phuket Airport for departure.",
+        accommodation: "N/A"
+      }
+    ],
+    mapLocation: {
+      lat: 7.8804,
+      lng: 98.3923
+    }
+  },
+  {
+    id: "8",
+    name: "Hua Hin Golf & Beach Retreat",
+    slug: "hua-hin-golf-beach-retreat",
+    description: "Experience Thailand's premier golf destination in Hua Hin, where championship courses meet pristine beaches. Enjoy world-class golf, royal heritage, and luxury resort living in this charming coastal town.",
+    shortDescription: "Championship golf and beach relaxation in Hua Hin.",
+    duration: 5,
+    price: 950,
+    currency: "$",
+    location: "Hua Hin",
+    country: "Thailand",
+    rating: 0,
+    reviewCount: 0,
+    featured: true,
+    imageSrc: "/images/destinations/thailand/thailand-golf.jpg",
+    imageAlt: "Golf course in Hua Hin with ocean and mountain views",
+    gallery: getTourGalleryImages("hua-hin-golf-beach-retreat"),
+    highlights: [
+      "Play at Black Mountain Golf Club, one of Asia's top courses",
+      "Tee off at Banyan Golf Club with stunning ocean views",
+      "Experience Royal Hua Hin Golf Course, Thailand's oldest course",
+      "Stay at luxury beachfront resorts",
+      "Enjoy Hua Hin's beautiful beaches and royal palaces",
+      "Explore local markets and authentic Thai cuisine",
+      "Optional spa treatments and cultural tours"
+    ],
+    includes: [
+      "4 nights in 5-star beachfront resorts",
+      "3 rounds of golf at championship courses",
+      "Daily breakfast",
+      "Airport transfers and golf course transportation",
+      "Local English-speaking golf guide",
+      "Golf cart and caddie fees"
+    ],
+    excludes: [
+      "International flights",
+      "Visa fees (if applicable)",
+      "Personal expenses",
+      "Tips for guide and caddies",
+      "Travel insurance",
+      "Optional activities and spa treatments"
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival – Hua Hin",
+        description: "Airport pickup and transfer to beachfront resort. Check-in and welcome briefing. Evening at leisure.",
+        accommodation: "5-Star Beachfront Resort",
+        starRating: 5
+      },
+      {
+        day: 2,
+        title: "Golf at Black Mountain Golf Club",
+        description: "Breakfast at resort. Morning round at Black Mountain Golf Club. Afternoon beach time or resort activities.",
+        accommodation: "5-Star Beachfront Resort",
+        starRating: 5
+      },
+      {
+        day: 3,
+        title: "Golf at Banyan Golf Club",
+        description: "Early breakfast. Golf at Banyan Golf Club with ocean views. Afternoon cultural tour or spa treatment.",
+        accommodation: "5-Star Beachfront Resort",
+        starRating: 5
+      },
+      {
+        day: 4,
+        title: "Golf at Royal Hua Hin",
+        description: "Final round at Royal Hua Hin Golf Course. Afternoon free for beach activities or shopping. Farewell dinner.",
+        accommodation: "5-Star Beachfront Resort",
+        starRating: 5
+      },
+      {
+        day: 5,
+        title: "Departure",
+        description: "Breakfast and check-out. Transfer to airport for departure.",
+        accommodation: "N/A"
+      }
+    ],
+    mapLocation: {
+      lat: 12.5684,
+      lng: 99.9577
+    }
+  },
+  {
+    id: "9",
+    name: "Pattaya Golf & Entertainment",
+    slug: "pattaya-golf-entertainment",
+    description: "Combine championship golf with vibrant entertainment in Pattaya. Play at world-class courses during the day and enjoy the city's famous nightlife, beaches, and dining scene in the evenings.",
+    shortDescription: "Golf and entertainment in Thailand's vibrant coastal city.",
+    duration: 5,
+    price: 900,
+    currency: "$",
+    location: "Pattaya",
+    country: "Thailand",
+    rating: 0,
+    reviewCount: 0,
+    featured: false,
+    imageSrc: "/images/destinations/thailand/thailand-golf.jpg",
+    imageAlt: "Golf course in Pattaya with coastal views",
+    gallery: getTourGalleryImages("pattaya-golf-entertainment"),
+    highlights: [
+      "Play at Siam Country Club, host of LPGA tournaments",
+      "Tee off at Laem Chabang International Country Club",
+      "Experience Phoenix Gold Golf & Country Club",
+      "Stay at luxury beachfront hotels",
+      "Enjoy Pattaya's vibrant nightlife and entertainment",
+      "Explore beautiful beaches and water activities",
+      "Optional cultural shows and dining experiences"
+    ],
+    includes: [
+      "4 nights in 5-star beachfront hotels",
+      "3 rounds of golf at championship courses",
+      "Daily breakfast",
+      "Airport transfers and golf course transportation",
+      "Local English-speaking golf guide",
+      "Golf cart and caddie fees"
+    ],
+    excludes: [
+      "International flights",
+      "Visa fees (if applicable)",
+      "Personal expenses",
+      "Tips for guide and caddies",
+      "Travel insurance",
+      "Optional activities and entertainment"
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival – Pattaya",
+        description: "Airport pickup and transfer to beachfront hotel. Check-in and welcome briefing. Evening at leisure.",
+        accommodation: "5-Star Beachfront Hotel",
+        starRating: 5
+      },
+      {
+        day: 2,
+        title: "Golf at Siam Country Club",
+        description: "Breakfast at hotel. Morning round at Siam Country Club. Afternoon beach time or city exploration.",
+        accommodation: "5-Star Beachfront Hotel",
+        starRating: 5
+      },
+      {
+        day: 3,
+        title: "Golf at Laem Chabang",
+        description: "Early breakfast. Golf at Laem Chabang International Country Club. Evening free for entertainment and dining.",
+        accommodation: "5-Star Beachfront Hotel",
+        starRating: 5
+      },
+      {
+        day: 4,
+        title: "Golf at Phoenix Gold",
+        description: "Final round at Phoenix Gold Golf & Country Club. Afternoon free for activities. Farewell dinner (optional).",
+        accommodation: "5-Star Beachfront Hotel",
+        starRating: 5
+      },
+      {
+        day: 5,
+        title: "Departure",
+        description: "Breakfast and check-out. Transfer to airport for departure.",
+        accommodation: "N/A"
+      }
+    ],
+    mapLocation: {
+      lat: 12.9236,
+      lng: 100.8825
+    }
+  },
   
 ];
 

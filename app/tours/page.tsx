@@ -20,7 +20,13 @@ export default function ToursPage() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   const filteredTours = useMemo(() => {
-    const getRegionForTour = (tour: any): "north" | "central" | "south" | "all" => {
+    const getRegionForTour = (tour: any): "north" | "central" | "south" | "thailand" | "india" | "all" => {
+      // Check country first
+      const countryLower = (tour.country ?? "").toLowerCase();
+      if (countryLower === "thailand") return "thailand";
+      if (countryLower === "india") return "india";
+      
+      // Then check Vietnam regions
       const slugLower = (tour.slug ?? "").toLowerCase();
       if (slugLower.includes("north")) return "north";
       if (slugLower.includes("central")) return "central";
@@ -97,6 +103,8 @@ export default function ToursPage() {
                 <SelectItem value="north">North Vietnam</SelectItem>
                 <SelectItem value="central">Central Vietnam</SelectItem>
                 <SelectItem value="south">South Vietnam</SelectItem>
+                <SelectItem value="thailand">Thailand</SelectItem>
+                <SelectItem value="india">India</SelectItem>
               </SelectContent>
             </Select>
 
